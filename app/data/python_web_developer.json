@@ -1,0 +1,499 @@
+{
+  "role": {
+    "id": "python_web_developer",
+    "title": "Python Web Developer",
+    "description": "MVP-роль для оценки backend/web-разработчика на Python."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести фичи и быть сильнее в backend.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за архитектуру, качество и технические решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий опыт и стек",
+      "help_text": "Например: с какими фреймворками, БД, инструментами и типами задач ты реально работал(а). Лучше 2-4 предложения.",
+      "options": []
+    },
+    {
+      "id": "ownership_example",
+      "kind": "free_text",
+      "title": "Какие задачи ты делал(а) самостоятельно от начала до конца?",
+      "help_text": "Опиши 1-2 примера: что именно делал(а), где принимал(а) решения, писал(а) ли тесты, настраивал(а) ли Docker, CI/CD или деплой.",
+      "options": []
+    },
+    {
+      "id": "python_core",
+      "kind": "competency",
+      "competency_id": "python_core",
+      "title": "Какой у тебя реальный уровень Python?",
+      "help_text": "Смотри на практические задачи, а не только на теорию.",
+      "options": [
+        {
+          "id": "python_core_0",
+          "label": "Знаю синтаксис только по учебным задачам",
+          "score": 0
+        },
+        {
+          "id": "python_core_1",
+          "label": "Пишу рабочие функции и классы, понимаю ООП и обработку ошибок",
+          "score": 1
+        },
+        {
+          "id": "python_core_2",
+          "label": "Уверенно использую typing, декораторы, генераторы и чистую структуру кода",
+          "score": 2
+        },
+        {
+          "id": "python_core_3",
+          "label": "Принимаю инженерные решения по кодовой базе и задаю стандарты",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "web_frameworks",
+      "kind": "competency",
+      "competency_id": "web_frameworks",
+      "title": "Как ты работаешь с FastAPI, Django и REST API?",
+      "help_text": "Здесь важны не названия фреймворков, а глубина участия.",
+      "options": [
+        {
+          "id": "web_frameworks_0",
+          "label": "Делал(а) только учебные CRUD и простые ручки",
+          "score": 0
+        },
+        {
+          "id": "web_frameworks_1",
+          "label": "Писал(а) API по понятному ТЗ и работал(а) с сериализацией и валидацией",
+          "score": 1
+        },
+        {
+          "id": "web_frameworks_2",
+          "label": "Сам(а) проектировал(а) endpoint-ы, авторизацию, слои сервиса и структуру модуля",
+          "score": 2
+        },
+        {
+          "id": "web_frameworks_3",
+          "label": "Определял(а) API-контракты, архитектуру сервиса и границы ответственности",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "databases",
+      "kind": "competency",
+      "competency_id": "databases",
+      "title": "Насколько уверенно ты работаешь с PostgreSQL и SQL?",
+      "help_text": "ORM тоже считается, если ты понимаешь, что происходит под капотом.",
+      "options": [
+        {
+          "id": "databases_0",
+          "label": "Почти не работал(а) с БД или только повторял(а) готовые примеры",
+          "score": 0
+        },
+        {
+          "id": "databases_1",
+          "label": "Делаю CRUD, простые выборки, миграции и базовую работу через ORM",
+          "score": 1
+        },
+        {
+          "id": "databases_2",
+          "label": "Пишу более сложные запросы, понимаю индексы и оптимизирую SQL",
+          "score": 2
+        },
+        {
+          "id": "databases_3",
+          "label": "Проектирую схемы данных, нахожу узкие места и принимаю решения по хранению",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "testing",
+      "kind": "competency",
+      "competency_id": "testing",
+      "title": "Что у тебя с тестированием?",
+      "help_text": "Оцени по тому, как часто и на каком уровне ты реально пишешь тесты.",
+      "options": [
+        {
+          "id": "testing_0",
+          "label": "Тесты почти не писал(а)",
+          "score": 0
+        },
+        {
+          "id": "testing_1",
+          "label": "Писал(а) базовые unit-тесты и простые проверки через pytest",
+          "score": 1
+        },
+        {
+          "id": "testing_2",
+          "label": "Покрывал(а) сервисы unit и integration тестами, использовал(а) фикстуры и тестовую БД",
+          "score": 2
+        },
+        {
+          "id": "testing_3",
+          "label": "Определял(а) тестовую стратегию, quality gate и держал(а) качество релизов",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "docker_delivery",
+      "kind": "competency",
+      "competency_id": "docker_delivery",
+      "title": "Какой у тебя опыт с Docker и доставкой приложения?",
+      "help_text": "Сюда входит контейнеризация, запуск окружения и понимание деплоя.",
+      "options": [
+        {
+          "id": "docker_delivery_0",
+          "label": "Docker не использовал(а) или только видел(а) со стороны",
+          "score": 0
+        },
+        {
+          "id": "docker_delivery_1",
+          "label": "Запускал(а) сервис в Docker или Docker Compose по готовой конфигурации",
+          "score": 1
+        },
+        {
+          "id": "docker_delivery_2",
+          "label": "Сам(а) собирал(а) Dockerfile и Compose, понимал(а) env и путь до деплоя",
+          "score": 2
+        },
+        {
+          "id": "docker_delivery_3",
+          "label": "Оптимизировал(а) контейнеры и участвовал(а) в production setup и релизах",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "async_background",
+      "kind": "competency",
+      "competency_id": "async_background",
+      "title": "Как ты работаешь с async и конкурентными сценариями?",
+      "help_text": "Не теория, а практическое применение в коде и понимание ограничений.",
+      "options": [
+        {
+          "id": "async_background_0",
+          "label": "С async почти не работал(а)",
+          "score": 0
+        },
+        {
+          "id": "async_background_1",
+          "label": "Понимаю основы async/await и использовал(а) готовые асинхронные куски",
+          "score": 1
+        },
+        {
+          "id": "async_background_2",
+          "label": "Сам(а) писал(а) async API и разбирался(ась) с I/O-bound сценариями",
+          "score": 2
+        },
+        {
+          "id": "async_background_3",
+          "label": "Проектировал(а) конкурентные сценарии и снимал(а) узкие места производительности",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "caching_queues",
+      "kind": "competency",
+      "competency_id": "caching_queues",
+      "title": "Есть ли у тебя опыт с Redis, кэшированием и очередями задач?",
+      "help_text": "Например: Redis, Celery, RQ, Dramatiq, background jobs.",
+      "options": [
+        {
+          "id": "caching_queues_0",
+          "label": "Кэш и очереди задач пока не использовал(а)",
+          "score": 0
+        },
+        {
+          "id": "caching_queues_1",
+          "label": "Пробовал(а) Redis или Celery по готовому шаблону",
+          "score": 1
+        },
+        {
+          "id": "caching_queues_2",
+          "label": "Настраивал(а) кэш и фоновые задачи под реальные сценарии, понимал(а) retry и idempotency",
+          "score": 2
+        },
+        {
+          "id": "caching_queues_3",
+          "label": "Проектировал(а) пайплайны фоновой обработки и стратегию кэширования сервиса",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "ci_cd_observability",
+      "kind": "competency",
+      "competency_id": "ci_cd_observability",
+      "title": "Какой у тебя опыт с CI/CD, логированием и наблюдаемостью?",
+      "help_text": "Сюда же входят метрики, health-check и алерты.",
+      "options": [
+        {
+          "id": "ci_cd_observability_0",
+          "label": "CI/CD и мониторинг почти не настраивал(а)",
+          "score": 0
+        },
+        {
+          "id": "ci_cd_observability_1",
+          "label": "Понимаю базовый пайплайн, пользовался(ась) логами и health-check",
+          "score": 1
+        },
+        {
+          "id": "ci_cd_observability_2",
+          "label": "Сам(а) настраивал(а) CI/CD, логирование, метрики или алерты",
+          "score": 2
+        },
+        {
+          "id": "ci_cd_observability_3",
+          "label": "Определял(а) релизный процесс, quality gate и наблюдаемость сервиса",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "architecture_ownership",
+      "kind": "competency",
+      "competency_id": "architecture_ownership",
+      "title": "Какая у тебя зона ответственности в задачах?",
+      "help_text": "Важно, насколько самостоятельно ты ведешь фичи и принимаешь решения.",
+      "options": [
+        {
+          "id": "architecture_ownership_0",
+          "label": "Делаю только небольшие задачи с постоянным сопровождением",
+          "score": 0
+        },
+        {
+          "id": "architecture_ownership_1",
+          "label": "Сам(а) закрываю простые фичи end-to-end по понятному ТЗ",
+          "score": 1
+        },
+        {
+          "id": "architecture_ownership_2",
+          "label": "Декомпозирую задачи, оцениваю риски и отвечаю за фичу целиком",
+          "score": 2
+        },
+        {
+          "id": "architecture_ownership_3",
+          "label": "Веду крупные фичи, принимаю архитектурные решения и влияю на команду",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "collaboration_git",
+      "kind": "competency",
+      "competency_id": "collaboration_git",
+      "title": "Как ты работаешь с Git и командной разработкой?",
+      "help_text": "Здесь важны review, ветки и понимание совместного процесса.",
+      "options": [
+        {
+          "id": "collaboration_git_0",
+          "label": "Работаю в основном один(одна), Git знаю на базовом уровне",
+          "score": 0
+        },
+        {
+          "id": "collaboration_git_1",
+          "label": "Пользуюсь ветками, pull request и code review как разработчик",
+          "score": 1
+        },
+        {
+          "id": "collaboration_git_2",
+          "label": "Уверенно веду feature-ветки, разбираюсь в rebase и сам(а) даю review",
+          "score": 2
+        },
+        {
+          "id": "collaboration_git_3",
+          "label": "Выстраиваю workflow команды и инженерные практики вокруг разработки",
+          "score": 3
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "python_core",
+      "title": "Python core",
+      "signals": ["python", "ооп", "typing", "exceptions"],
+      "weight": 1.4,
+      "roadmap_action": "Закрой typing, декораторы, генераторы, обработку исключений и структуру проекта на практике.",
+      "why_it_matters": "Без сильной базы Python трудно уверенно расти в backend и поддерживать сложный код."
+    },
+    {
+      "id": "web_frameworks",
+      "title": "FastAPI/Django и REST API",
+      "signals": ["fastapi", "django", "rest", "rest_api", "api", "backend"],
+      "weight": 1.4,
+      "roadmap_action": "Собери API-сервис с валидацией, auth, слоями приложения и документацией OpenAPI.",
+      "why_it_matters": "Это основа роли Python Web Developer и главный носитель реального backend-опыта."
+    },
+    {
+      "id": "databases",
+      "title": "PostgreSQL и SQL",
+      "signals": ["postgresql", "postgres", "sql", "orm", "database"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль SQL, индексы, миграции и диагностику медленных запросов на реальной БД.",
+      "why_it_matters": "Рост в backend почти всегда упирается в качество работы с данными."
+    },
+    {
+      "id": "testing",
+      "title": "Тестирование",
+      "signals": ["testing", "pytest", "unit_testing", "integration_testing", "tests"],
+      "weight": 1.3,
+      "roadmap_action": "Добавь pytest, unit и integration тесты, фикстуры и проверки основных сценариев API.",
+      "why_it_matters": "Без тестов сложно расти в сторону надежной разработки и уверенно выпускать изменения."
+    },
+    {
+      "id": "docker_delivery",
+      "title": "Docker и доставка сервиса",
+      "signals": ["docker", "docker_compose", "deployment", "containers"],
+      "weight": 1.0,
+      "roadmap_action": "Научись сам(а) собирать Dockerfile, Compose и готовить сервис к запуску в окружении.",
+      "why_it_matters": "Контейнеризация ускоряет локальную разработку и дает базу для деплоя."
+    },
+    {
+      "id": "async_background",
+      "title": "Async и конкурентность",
+      "signals": ["async", "asyncio", "async_await", "concurrency"],
+      "weight": 1.1,
+      "roadmap_action": "Разберись с async/await, I/O-bound задачами, background processing и ограничениями блокирующего кода.",
+      "why_it_matters": "Для web/backend-сервисов это частый источник роста в производительности и зрелости решений."
+    },
+    {
+      "id": "caching_queues",
+      "title": "Redis, кэш и очереди",
+      "signals": ["redis", "celery", "queues", "queue", "caching", "background_jobs"],
+      "weight": 1.0,
+      "roadmap_action": "Добавь Redis и очередь задач в проект, разберись с retry, задержками и инвалидацией кэша.",
+      "why_it_matters": "Это типичные инструменты production backend-разработки и частый gap до Middle/Senior."
+    },
+    {
+      "id": "ci_cd_observability",
+      "title": "CI/CD и наблюдаемость",
+      "signals": ["ci_cd", "github_actions", "gitlab_ci", "logging", "monitoring", "observability"],
+      "weight": 1.0,
+      "roadmap_action": "Настрой пайплайн, логирование, health-check и базовые метрики хотя бы для одного pet-проекта.",
+      "why_it_matters": "CI/CD и observability показывают зрелость инженера, а не только умение писать код."
+    },
+    {
+      "id": "architecture_ownership",
+      "title": "Ownership и архитектурная ответственность",
+      "signals": ["ownership", "architecture", "feature_ownership", "system_design"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй декомпозицию фич, оценку рисков, документирование решений и ведение задачи end-to-end.",
+      "why_it_matters": "Именно ownership обычно отделяет просто исполнителя от самостоятельного Middle и Senior."
+    },
+    {
+      "id": "collaboration_git",
+      "title": "Git и командная разработка",
+      "signals": ["git", "pull_request", "code_review", "rebase", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль работу с ветками, review, rebase и договоренностями команды вокруг разработки.",
+      "why_it_matters": "Хороший backend-разработчик растет не в вакууме, а внутри инженерного процесса команды."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "python_core": 1,
+        "web_frameworks": 1,
+        "databases": 1,
+        "testing": 1,
+        "docker_delivery": 1,
+        "architecture_ownership": 1,
+        "collaboration_git": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "python_core": 2,
+        "web_frameworks": 2,
+        "databases": 2,
+        "testing": 2,
+        "docker_delivery": 2,
+        "async_background": 1,
+        "caching_queues": 1,
+        "ci_cd_observability": 1,
+        "architecture_ownership": 2,
+        "collaboration_git": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "python_core": 3,
+        "web_frameworks": 3,
+        "databases": 3,
+        "testing": 3,
+        "docker_delivery": 2,
+        "async_background": 3,
+        "caching_queues": 2,
+        "ci_cd_observability": 2,
+        "architecture_ownership": 3,
+        "collaboration_git": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "CRUD API на FastAPI с PostgreSQL, Docker и базовыми unit-тестами.",
+      "Telegram-бот для заметок с сохранением в БД и простым REST API."
+    ],
+    "middle": [
+      "Task Tracker API с FastAPI, PostgreSQL, Docker Compose, pytest и CI-пайплайном.",
+      "Notification Service с Redis, очередью задач, retry, логированием и health-check."
+    ],
+    "senior": [
+      "Платформа из нескольких сервисов с async worker, Redis, метриками, алертами и релизным пайплайном.",
+      "Внутренний backend-template: сервисный каркас с quality gate, observability и инженерными стандартами."
+    ]
+  }
+}
