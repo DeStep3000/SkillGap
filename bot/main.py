@@ -10,7 +10,7 @@ from aiogram.enums import ParseMode
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import CallbackQuery, Message, User
+from aiogram.types import BotCommand, CallbackQuery, Message, User
 
 from bot.client import ApiClientError, AssessmentApiClient
 from bot.config import get_settings
@@ -27,6 +27,17 @@ def get_api_client() -> AssessmentApiClient:
     return AssessmentApiClient(
         base_url=settings.api_base_url,
         timeout_seconds=settings.timeout_seconds,
+    )
+
+
+async def register_bot_commands(bot: Bot) -> None:
+    await bot.set_my_commands(
+        [
+            BotCommand(command="start", description="Начать заново"),
+            BotCommand(command="menu", description="Открыть главное меню"),
+            BotCommand(command="history", description="Показать историю"),
+            BotCommand(command="vacancy", description="Сравнить себя с вакансией"),
+        ]
     )
 
 
@@ -141,6 +152,14 @@ async def prompt_for_vacancy(
 
 @router.message(CommandStart())
 async def start_handler(message: Message, state: FSMContext) -> None:
+    try:
+        await render_role_menu(message, state)
+    except ApiClientError as error:
+        await message.answer(f"Не удалось получить данные от API: {error}")
+
+
+@router.message(Command("menu"))
+async def menu_handler(message: Message, state: FSMContext) -> None:
     try:
         await render_role_menu(message, state)
     except ApiClientError as error:
@@ -372,6 +391,7 @@ async def main() -> None:
         token=settings.bot_token,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
+    await register_bot_commands(bot)
     dispatcher = Dispatcher()
     dispatcher.include_router(router)
 
