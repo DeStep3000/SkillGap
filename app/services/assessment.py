@@ -171,7 +171,24 @@ class AssessmentEngine:
                 raise AssessmentError(
                     f"Invalid option {selected_option_id} for {question['id']}"
                 ) from error
-            scores[question["competency_id"]] = int(selected_option["score"])
+
+            score_map = selected_option.get("score_map")
+            if isinstance(score_map, dict):
+                for competency_id, raw_score in score_map.items():
+                    try:
+                        score = int(raw_score)
+                    except (TypeError, ValueError) as error:
+                        raise AssessmentError(
+                            f"Invalid score map for {question['id']}"
+                        ) from error
+                    scores[str(competency_id)] = max(0, min(3, score))
+                continue
+
+            competency_id = question.get("competency_id")
+            if not competency_id:
+                raise AssessmentError(f"Question {question['id']} has no competency mapping")
+
+            scores[competency_id] = int(selected_option["score"])
 
         return scores
 
