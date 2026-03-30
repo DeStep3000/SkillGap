@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import json
+from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, Body, Depends, HTTPException, Path, Request, status
 
 from app.repository import AssessmentRepository
 from app.schemas import (
+    ApiErrorResponse,
     AssessmentCreateRequest,
     AssessmentHistoryItem,
     AssessmentResponse,
@@ -21,6 +23,46 @@ from app.services.vacancy_matching import VacancyMatchingService
 
 
 router = APIRouter(prefix="/api/v1")
+
+RoleIdPath = Annotated[
+    str,
+    Path(
+        description="Идентификатор роли из справочника, например `python_web_developer` или `ml_engineer`.",
+        examples=["python_web_developer"],
+    ),
+]
+TelegramIdPath = Annotated[
+    int,
+    Path(
+        description="Telegram ID пользователя. Используется как ключ для истории оценок.",
+        examples=[123456789],
+    ),
+]
+AssessmentIdPath = Annotated[
+    int,
+    Path(
+        description="Идентификатор ранее сохраненной оценки пользователя.",
+        examples=[42],
+    ),
+]
+AssessmentRequestBody = Annotated[
+    AssessmentCreateRequest,
+    Body(
+        description=(
+            "Тело запроса для расчета новой оценки. "
+            "Ответы должны содержать все вопросы анкеты по выбранной роли."
+        )
+    ),
+]
+VacancyRequestBody = Annotated[
+    VacancyMatchRequest,
+    Body(
+        description=(
+            "Тело запроса для сравнения пользователя с вакансией. "
+            "Если `assessment_id` не передан, будет использована последняя оценка пользователя."
+        )
+    ),
+]
 
 
 def get_catalog(request: Request) -> RoleCatalog:
@@ -43,7 +85,17 @@ def get_vacancy_matching_service(request: Request) -> VacancyMatchingService:
     return request.app.state.vacancy_matching_service
 
 
-@router.get("/reference/roles", response_model=list[RoleSummary])
+@router.get(
+    "/reference/roles",
+    response_model=list[RoleSummary],
+    tags=["Справочники"],
+    summary="Получить список доступных ролей",
+    description=(
+        "Возвращает все роли, доступные в системе. "
+        "Используй этот метод первым, чтобы показать пользователю каталог направлений."
+    ),
+    response_description="Список доступных ролей.",
+)
 def list_roles(catalog: RoleCatalog = Depends(get_catalog)) -> list[dict]:
     return catalog.list_roles()
 
@@ -51,9 +103,22 @@ def list_roles(catalog: RoleCatalog = Depends(get_catalog)) -> list[dict]:
 @router.get(
     "/reference/roles/{role_id}/questionnaire",
     response_model=QuestionnaireResponse,
+    tags=["Справочники"],
+    summary="Получить анкету для роли",
+    description=(
+        "Возвращает анкету для выбранной роли: список уровней, вопросы, типы вопросов "
+        "и доступные варианты ответа."
+    ),
+    response_description="Описание роли и анкета для прохождения оценки.",
+    responses={
+        404: {
+            "model": ApiErrorResponse,
+            "description": "Роль с указанным `role_id` не найдена.",
+        }
+    },
 )
 def get_questionnaire(
-    role_id: str,
+    role_id: RoleIdPath,
     catalog: RoleCatalog = Depends(get_catalog),
 ) -> dict:
     try:
@@ -66,9 +131,27 @@ def get_questionnaire(
     "/assessments",
     response_model=AssessmentResponse,
     status_code=status.HTTP_201_CREATED,
+    tags=["Оценка"],
+    summary="Создать новую оценку пользователя",
+    description=(
+        "Принимает ответы пользователя по выбранной анкете, рассчитывает уровень, gaps, "
+        "roadmap и сохраняет результат в историю. "
+        "Если включен LLM-слой, свободный текст может быть дополнительно обработан."
+    ),
+    response_description="Рассчитанная и сохраненная оценка пользователя.",
+    responses={
+        400: {
+            "model": ApiErrorResponse,
+            "description": "Некорректные или неполные ответы анкеты.",
+        },
+        404: {
+            "model": ApiErrorResponse,
+            "description": "Роль из запроса не найдена.",
+        },
+    },
 )
 def create_assessment(
-    payload: AssessmentCreateRequest,
+    payload: AssessmentRequestBody,
     catalog: RoleCatalog = Depends(get_catalog),
     engine: AssessmentEngine = Depends(get_engine),
     repository: AssessmentRepository = Depends(get_repository),
@@ -112,9 +195,16 @@ def create_assessment(
 @router.get(
     "/users/{telegram_id}/history",
     response_model=list[AssessmentHistoryItem],
+    tags=["История"],
+    summary="Получить историю оценок пользователя",
+    description=(
+        "Возвращает краткую историю всех сохраненных оценок для конкретного пользователя "
+        "по его Telegram ID."
+    ),
+    response_description="Список прошлых оценок пользователя.",
 )
 def get_history(
-    telegram_id: int,
+    telegram_id: TelegramIdPath,
     repository: AssessmentRepository = Depends(get_repository),
 ) -> list[dict]:
     records = repository.list_assessments(telegram_id)
@@ -141,10 +231,23 @@ def get_history(
 @router.get(
     "/users/{telegram_id}/history/{assessment_id}",
     response_model=AssessmentResponse,
+    tags=["История"],
+    summary="Получить сохраненную оценку по ID",
+    description=(
+        "Возвращает полную сохраненную оценку пользователя: breakdown, gaps, roadmap, "
+        "объяснение, LLM-метаданные и дату создания."
+    ),
+    response_description="Полная сохраненная оценка пользователя.",
+    responses={
+        404: {
+            "model": ApiErrorResponse,
+            "description": "Оценка не найдена для указанного пользователя.",
+        }
+    },
 )
 def get_assessment_detail(
-    telegram_id: int,
-    assessment_id: int,
+    telegram_id: TelegramIdPath,
+    assessment_id: AssessmentIdPath,
     repository: AssessmentRepository = Depends(get_repository),
 ) -> dict:
     record = repository.get_assessment(telegram_id, assessment_id)
@@ -161,10 +264,27 @@ def get_assessment_detail(
     "/users/{telegram_id}/vacancy-analyses",
     response_model=VacancyMatchResponse,
     status_code=status.HTTP_201_CREATED,
+    tags=["Вакансии"],
+    summary="Сравнить профиль пользователя с вакансией",
+    description=(
+        "Принимает текст вакансии, извлекает требования и сравнивает их с сохраненной оценкой "
+        "пользователя. Если `assessment_id` не передан, используется последняя доступная оценка."
+    ),
+    response_description="Результат vacancy match с приоритетными gaps и найденными совпадениями.",
+    responses={
+        400: {
+            "model": ApiErrorResponse,
+            "description": "Пустой текст вакансии или не удалось извлечь требования из вакансии.",
+        },
+        404: {
+            "model": ApiErrorResponse,
+            "description": "Оценка пользователя или роль для этой оценки не найдены.",
+        },
+    },
 )
 def create_vacancy_analysis(
-    telegram_id: int,
-    payload: VacancyMatchRequest,
+    telegram_id: TelegramIdPath,
+    payload: VacancyRequestBody,
     catalog: RoleCatalog = Depends(get_catalog),
     repository: AssessmentRepository = Depends(get_repository),
     llm_service: BaseLLMService = Depends(get_llm_service),

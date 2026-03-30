@@ -13,6 +13,46 @@ from app.services.llm_service import build_llm_service
 from app.services.vacancy_matching import VacancyMatchingService
 
 
+API_DESCRIPTION = """
+`SkillGap API` помогает:
+
+1. Получить список доступных карьерных ролей.
+2. Загрузить анкету для выбранной роли.
+3. Отправить ответы пользователя и получить оценку уровня.
+4. Посмотреть историю прошлых оценок.
+5. Сравнить сохраненную оценку с текстом вакансии.
+
+Особенности:
+
+- основная оценка считается детерминированно по матрице компетенций;
+- LLM-слой может усиливать extraction из свободного текста и делать human-readable explanation;
+- список ролей и логика оценки загружаются из `app/data/*.json`.
+""".strip()
+
+OPENAPI_TAGS = [
+    {
+        "name": "Служебное",
+        "description": "Служебные методы для проверки доступности API.",
+    },
+    {
+        "name": "Справочники",
+        "description": "Справочные методы: роли, уровни и анкеты по ролям.",
+    },
+    {
+        "name": "Оценка",
+        "description": "Создание новой карьерной оценки по ответам пользователя.",
+    },
+    {
+        "name": "История",
+        "description": "Просмотр сохраненных оценок конкретного пользователя.",
+    },
+    {
+        "name": "Вакансии",
+        "description": "Сравнение сохраненного профиля пользователя с текстом вакансии.",
+    },
+]
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     settings = get_settings()
@@ -33,12 +73,21 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title=get_settings().api_title,
+    summary="API карьерного ассистента SkillGap",
+    description=API_DESCRIPTION,
     version=get_settings().api_version,
+    openapi_tags=OPENAPI_TAGS,
     lifespan=lifespan,
 )
 app.include_router(router)
 
 
-@app.get("/health")
+@app.get(
+    "/health",
+    tags=["Служебное"],
+    summary="Проверка доступности API",
+    description="Простой health-check. Можно использовать для мониторинга или smoke-проверки сервиса.",
+    response_description="Статус доступности API.",
+)
 def healthcheck() -> dict[str, str]:
     return {"status": "ok"}
