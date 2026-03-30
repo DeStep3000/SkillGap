@@ -24,7 +24,7 @@ def get_settings() -> BotSettings:
 
     return BotSettings(
         bot_token=bot_token,
-        api_base_url=os.getenv("API_BASE_URL", "http://127.0.0.1:8000").rstrip("/"),
+        api_base_url=os.getenv("API_BASE_URL", "http://127.0.0.1:8123").rstrip("/"),
         timeout_seconds=float(os.getenv("API_TIMEOUT_SECONDS", "20")),
     )
 

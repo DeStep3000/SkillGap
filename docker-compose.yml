@@ -35,20 +35,20 @@ services:
         "--host",
         "0.0.0.0",
         "--port",
-        "8000"
+        "8123"
       ]
     depends_on:
       db:
         condition: service_healthy
     ports:
-      - "${API_PORT:-8000}:8000"
+      - "${API_PORT:-8123}:8123"
     healthcheck:
       test:
         [
           "CMD",
           "python",
           "-c",
-          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8123/health')"
         ]
       interval: 10s
       timeout: 5s
@@ -61,7 +61,7 @@ services:
     env_file:
       - .env
     environment:
-      API_BASE_URL: http://api:8000
+      API_BASE_URL: http://api:8123
     command: ["python", "-m", "bot.main"]
     depends_on:
       api:

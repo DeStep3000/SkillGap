@@ -66,7 +66,7 @@ docker compose up --build
 
 После старта будут доступны:
 
-- API: `http://localhost:8000`
+- API: `http://localhost:8123`
 - PostgreSQL: `localhost:5432`
 
 ## Локальный запуск через uv
