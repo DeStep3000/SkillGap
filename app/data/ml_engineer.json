@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "ml_engineer",
+    "title": "ML Engineer",
+    "description": "Оценка ML engineer с фокусом на модели, data pipelines, MLOps и production delivery."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести ML-задачи и production delivery моделей.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за ML-платформу, качество решений и технические стандарты.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий ML-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): Python, sklearn/PyTorch, feature engineering, training, evaluation, tracking, deployment, monitoring, cloud, pipelines, какие ML-задачи или сервисы вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "ml_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень базы в machine learning?",
+      "help_text": "Смотри на практику: Python, математика/статистика, обучение и оценка моделей.",
+      "options": [
+        {
+          "id": "ml_foundation_0",
+          "label": "Учебные ноутбуки и простые модели",
+          "score_map": {
+            "python_ml_core": 0,
+            "math_statistics": 0,
+            "model_training_evaluation": 0
+          }
+        },
+        {
+          "id": "ml_foundation_1",
+          "label": "Рабочие модели по понятному шаблону",
+          "score_map": {
+            "python_ml_core": 1,
+            "math_statistics": 1,
+            "model_training_evaluation": 1
+          }
+        },
+        {
+          "id": "ml_foundation_2",
+          "label": "Сам(а) собираю и сравниваю ML-решения",
+          "score_map": {
+            "python_ml_core": 2,
+            "math_statistics": 2,
+            "model_training_evaluation": 2
+          }
+        },
+        {
+          "id": "ml_foundation_3",
+          "label": "Определяю modeling approach и стандарты оценки",
+          "score_map": {
+            "python_ml_core": 3,
+            "math_statistics": 3,
+            "model_training_evaluation": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml_delivery",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с ML delivery и production-практиками?",
+      "help_text": "Сюда входят фреймворки, feature engineering, experiment tracking, deployment и cloud-инфраструктура.",
+      "options": [
+        {
+          "id": "ml_delivery_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "ml_frameworks": 0,
+            "data_preparation_features": 0,
+            "experimentation_tracking": 0,
+            "mlops_deployment": 0,
+            "cloud_infrastructure": 0
+          }
+        },
+        {
+          "id": "ml_delivery_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "ml_frameworks": 1,
+            "data_preparation_features": 1,
+            "experimentation_tracking": 1,
+            "mlops_deployment": 1,
+            "cloud_infrastructure": 1
+          }
+        },
+        {
+          "id": "ml_delivery_2",
+          "label": "Сам(а) доводил(а) ML-решения до продакшена",
+          "score_map": {
+            "ml_frameworks": 2,
+            "data_preparation_features": 2,
+            "experimentation_tracking": 2,
+            "mlops_deployment": 2,
+            "cloud_infrastructure": 2
+          }
+        },
+        {
+          "id": "ml_delivery_3",
+          "label": "Определял(а) MLOps practices и platform standards",
+          "score_map": {
+            "ml_frameworks": 3,
+            "data_preparation_features": 3,
+            "experimentation_tracking": 3,
+            "mlops_deployment": 3,
+            "cloud_infrastructure": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в ML-инициативах и командной работе?",
+      "help_text": "Оцени, насколько ты ведешь ML-задачи end-to-end, влияешь на продуктовые решения, работаешь с PR/review и двигаешь инженерный процесс.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "product_ownership": 0,
+            "collaboration_git": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые ML-задачи end-to-end",
+          "score_map": {
+            "product_ownership": 1,
+            "collaboration_git": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду ML-инициативы и даю review",
+          "score_map": {
+            "product_ownership": 2,
+            "collaboration_git": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Формирую ML-повестку и platform workflow",
+          "score_map": {
+            "product_ownership": 3,
+            "collaboration_git": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "python_ml_core",
+      "title": "Python и ML core",
+      "signals": ["python", "numpy", "pandas", "ml", "notebooks"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль Python, numpy/pandas, читаемую структуру кода и базовые инженерные практики вокруг ML.",
+      "why_it_matters": "Python — основной язык ML-инженера и база для всех последующих решений."
+    },
+    {
+      "id": "math_statistics",
+      "title": "Математика и статистика",
+      "signals": ["statistics", "probability", "metrics", "bias_variance", "math"],
+      "weight": 1.3,
+      "roadmap_action": "Усиль статистику, метрики, переобучение, валидацию и интерпретацию результатов модели.",
+      "why_it_matters": "Без статистики ML-инженер рискует оптимизировать модель по неправильным критериям."
+    },
+    {
+      "id": "model_training_evaluation",
+      "title": "Training и evaluation",
+      "signals": ["training", "evaluation", "cross_validation", "hyperparameters", "metrics"],
+      "weight": 1.3,
+      "roadmap_action": "Отработай тренировку моделей, подбор гиперпараметров, валидацию и сравнение подходов на реальных задачах.",
+      "why_it_matters": "Качество ML-решения начинается с корректного процесса обучения и оценки."
+    },
+    {
+      "id": "ml_frameworks",
+      "title": "ML frameworks",
+      "signals": ["sklearn", "pytorch", "tensorflow", "xgboost", "lightgbm"],
+      "weight": 1.1,
+      "roadmap_action": "Разберись с основными ML/DL frameworks и осознанным выбором инструмента под задачу.",
+      "why_it_matters": "Фреймворк сам по себе не делает результат, но влияет на скорость и масштаб решения."
+    },
+    {
+      "id": "data_preparation_features",
+      "title": "Подготовка данных и feature engineering",
+      "signals": ["feature_engineering", "preprocessing", "data_preparation", "features", "pipelines"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль preprocessing, feature pipelines, handling missing data, leakage prevention и reproducible data prep.",
+      "why_it_matters": "Многие ML-проблемы на практике решаются качеством данных, а не только моделью."
+    },
+    {
+      "id": "experimentation_tracking",
+      "title": "Experimentation и tracking",
+      "signals": ["mlflow", "weights_and_biases", "tracking", "experiments", "reproducibility"],
+      "weight": 1.0,
+      "roadmap_action": "Добавь tracking экспериментов, версионирование, reproducibility и сравнение моделей по понятным критериям.",
+      "why_it_matters": "Без tracking ML быстро превращается в набор невоспроизводимых ноутбуков."
+    },
+    {
+      "id": "mlops_deployment",
+      "title": "MLOps и deployment",
+      "signals": ["mlops", "deployment", "serving", "monitoring", "inference"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль деплой моделей, batch/online serving, мониторинг качества и lifecycle production-моделей.",
+      "why_it_matters": "ML ценен только тогда, когда реально работает в продакшене."
+    },
+    {
+      "id": "cloud_infrastructure",
+      "title": "Cloud и инфраструктура",
+      "signals": ["aws", "gcp", "azure", "cloud", "kubernetes", "docker"],
+      "weight": 1.0,
+      "roadmap_action": "Разберись с cloud-средой, контейнеризацией, storage, compute и инфраструктурой для ML-сервисов.",
+      "why_it_matters": "ML-инженерия почти всегда упирается в инфраструктуру и эксплуатацию."
+    },
+    {
+      "id": "product_ownership",
+      "title": "Product ownership в ML",
+      "signals": ["ownership", "product", "impact", "decision_making", "business_metrics"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй выбор ML-задач по бизнес-эффекту, ownership по deliverables и связь модели с продуктовой ценностью.",
+      "why_it_matters": "Сильный ML engineer решает продуктовые задачи, а не просто тренирует модели."
+    },
+    {
+      "id": "collaboration_git",
+      "title": "Git и командная разработка",
+      "signals": ["git", "pull_request", "code_review", "rebase", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль review, ветки, инженерные договоренности и совместную работу вокруг ML-кода и пайплайнов.",
+      "why_it_matters": "ML-инженерия должна жить в обычном инженерном процессе, а не в изоляции."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "python_ml_core": 1,
+        "math_statistics": 1,
+        "model_training_evaluation": 1,
+        "data_preparation_features": 1,
+        "mlops_deployment": 1,
+        "product_ownership": 1,
+        "collaboration_git": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "python_ml_core": 2,
+        "math_statistics": 2,
+        "model_training_evaluation": 2,
+        "ml_frameworks": 2,
+        "data_preparation_features": 2,
+        "experimentation_tracking": 1,
+        "mlops_deployment": 2,
+        "cloud_infrastructure": 1,
+        "product_ownership": 2,
+        "collaboration_git": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "python_ml_core": 3,
+        "math_statistics": 3,
+        "model_training_evaluation": 3,
+        "ml_frameworks": 3,
+        "data_preparation_features": 3,
+        "experimentation_tracking": 2,
+        "mlops_deployment": 3,
+        "cloud_infrastructure": 2,
+        "product_ownership": 3,
+        "collaboration_git": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "Небольшой ML-проект на Python со сбором данных, feature engineering, baseline model и API для инференса.",
+      "Классификатор или recommender с базовой валидацией, experiment log и простым deployment."
+    ],
+    "middle": [
+      "Production-like ML service с tracking экспериментов, pipeline обучения, Docker и мониторингом drift/качества.",
+      "ML feature pipeline с reproducibility, model registry и раздельным batch/online inference path."
+    ],
+    "senior": [
+      "MLOps platform template с training pipelines, deployment standards, monitoring и governance по моделям.",
+      "Системный ML-продукт с несколькими моделями, feature store, experiment framework и продуктовым ownership."
+    ]
+  }
+}

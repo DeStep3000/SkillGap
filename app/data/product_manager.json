@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "product_manager",
+    "title": "Product Manager",
+    "description": "Оценка product manager с фокусом на discovery, метрики, delivery и влияние на продукт."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести discovery и delivery продуктовых задач.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за продуктовую стратегию, метрики и системные решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий product-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): discovery, roadmap, аналитика, SQL/BI, A/B тесты, customer research, постановка задач, коммуникация с командой и стейкхолдерами, какие продуктовые зоны вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "product_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень product-базы?",
+      "help_text": "Смотри на практику: problem discovery, метрики продукта и аналитика.",
+      "options": [
+        {
+          "id": "product_foundation_0",
+          "label": "Учебные кейсы и простые гипотезы",
+          "score_map": {
+            "problem_discovery": 0,
+            "product_metrics": 0,
+            "analytics_sql": 0
+          }
+        },
+        {
+          "id": "product_foundation_1",
+          "label": "Рабочие продуктовые задачи по понятному контексту",
+          "score_map": {
+            "problem_discovery": 1,
+            "product_metrics": 1,
+            "analytics_sql": 1
+          }
+        },
+        {
+          "id": "product_foundation_2",
+          "label": "Сам(а) формулирую и разбираю продуктовые проблемы",
+          "score_map": {
+            "problem_discovery": 2,
+            "product_metrics": 2,
+            "analytics_sql": 2
+          }
+        },
+        {
+          "id": "product_foundation_3",
+          "label": "Определяю product approach и метрики успеха",
+          "score_map": {
+            "problem_discovery": 3,
+            "product_metrics": 3,
+            "analytics_sql": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "discovery_delivery",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с discovery и delivery продукта?",
+      "help_text": "Сюда входят roadmap, требования, эксперименты, user research и процесс исполнения.",
+      "options": [
+        {
+          "id": "discovery_delivery_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "prioritization_roadmap": 0,
+            "requirements_delivery": 0,
+            "experimentation": 0,
+            "user_research": 0,
+            "execution_process": 0
+          }
+        },
+        {
+          "id": "discovery_delivery_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "prioritization_roadmap": 1,
+            "requirements_delivery": 1,
+            "experimentation": 1,
+            "user_research": 1,
+            "execution_process": 1
+          }
+        },
+        {
+          "id": "discovery_delivery_2",
+          "label": "Сам(а) веду product cycle под реальные цели",
+          "score_map": {
+            "prioritization_roadmap": 2,
+            "requirements_delivery": 2,
+            "experimentation": 2,
+            "user_research": 2,
+            "execution_process": 2
+          }
+        },
+        {
+          "id": "discovery_delivery_3",
+          "label": "Определяю стандарты product discovery и delivery",
+          "score_map": {
+            "prioritization_roadmap": 3,
+            "requirements_delivery": 3,
+            "experimentation": 3,
+            "user_research": 3,
+            "execution_process": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в коммуникации и продуктовом ownership?",
+      "help_text": "Оцени, насколько ты ведешь коммуникацию со стейкхолдерами, влияешь на решения и двигаешь продуктовую повестку.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "stakeholder_communication": 0,
+            "ownership_prioritization": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые product-задачи end-to-end",
+          "score_map": {
+            "stakeholder_communication": 1,
+            "ownership_prioritization": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду инициативы и влияю на решения",
+          "score_map": {
+            "stakeholder_communication": 2,
+            "ownership_prioritization": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Формирую продуктовую повестку и приоритеты",
+          "score_map": {
+            "stakeholder_communication": 3,
+            "ownership_prioritization": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "problem_discovery",
+      "title": "Problem discovery",
+      "signals": ["discovery", "problem_interviews", "pain_points", "jobs_to_be_done"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль problem framing, customer pain analysis и перевод неясных запросов в понятные продуктовые проблемы.",
+      "why_it_matters": "Сильный PM начинает не с фич, а с правильно сформулированной проблемы."
+    },
+    {
+      "id": "product_metrics",
+      "title": "Продуктовые метрики",
+      "signals": ["product_metrics", "north_star", "retention", "conversion", "funnel"],
+      "weight": 1.3,
+      "roadmap_action": "Отработай систему метрик, воронку, retention, leading indicators и связь метрик с решениями.",
+      "why_it_matters": "Без метрик продуктовый менеджмент быстро превращается в мнение вместо управляемого процесса."
+    },
+    {
+      "id": "analytics_sql",
+      "title": "Аналитика и SQL",
+      "signals": ["sql", "analytics", "bi", "dashboards", "data"],
+      "weight": 1.1,
+      "roadmap_action": "Усиль самостоятельную работу с данными, SQL и BI, чтобы опираться не только на чужие отчеты.",
+      "why_it_matters": "PM не обязан быть аналитиком, но обязан понимать данные и уметь их читать."
+    },
+    {
+      "id": "prioritization_roadmap",
+      "title": "Приоритизация и roadmap",
+      "signals": ["prioritization", "roadmap", "impact", "tradeoffs", "backlog"],
+      "weight": 1.2,
+      "roadmap_action": "Разберись с приоритизацией, стратегией roadmap и прозрачным объяснением trade-offs.",
+      "why_it_matters": "Продукт всегда ограничен ресурсами, и качество приоритизации здесь критично."
+    },
+    {
+      "id": "requirements_delivery",
+      "title": "Постановка задач и delivery",
+      "signals": ["requirements", "delivery", "specs", "acceptance_criteria", "execution"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль постановку задач, acceptance criteria, работу с зависимостями и предсказуемость delivery.",
+      "why_it_matters": "Даже хорошие идеи ломаются, если их нельзя качественно довести до релиза."
+    },
+    {
+      "id": "experimentation",
+      "title": "Эксперименты и validation",
+      "signals": ["ab_test", "experiments", "validation", "hypothesis", "learning"],
+      "weight": 1.1,
+      "roadmap_action": "Добавь практику валидации гипотез, дешевых экспериментов и оценки результата по данным.",
+      "why_it_matters": "Продуктовые решения должны проверяться, а не только обсуждаться."
+    },
+    {
+      "id": "user_research",
+      "title": "User research",
+      "signals": ["user_research", "interviews", "ux_research", "feedback", "usability"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль интервью, синтез инсайтов, проверку сценариев и работу с реальными пользователями.",
+      "why_it_matters": "Без контакта с пользователем продукт быстро теряет реальность."
+    },
+    {
+      "id": "execution_process",
+      "title": "Процесс исполнения",
+      "signals": ["execution", "scrum", "kanban", "planning", "delivery_process"],
+      "weight": 1.0,
+      "roadmap_action": "Разберись с ритмом работы команды, планированием, зависимостями и управлением неопределенностью.",
+      "why_it_matters": "PM влияет не только на идеи, но и на то, как они реально доходят до рынка."
+    },
+    {
+      "id": "stakeholder_communication",
+      "title": "Коммуникация со стейкхолдерами",
+      "signals": ["stakeholders", "communication", "alignment", "business", "leadership"],
+      "weight": 1.2,
+      "roadmap_action": "Практикуй alignment, ожидания, объяснение решений и коммуникацию между бизнесом, дизайном и разработкой.",
+      "why_it_matters": "PM постоянно работает между несколькими интересами, и слабая коммуникация быстро ломает продукт."
+    },
+    {
+      "id": "ownership_prioritization",
+      "title": "Ownership и стратегическая ответственность",
+      "signals": ["ownership", "strategy", "decision_making", "prioritization", "product_ownership"],
+      "weight": 1.3,
+      "roadmap_action": "Усиль ownership за продуктовую область, формирование направления и принятие решений под неопределенностью.",
+      "why_it_matters": "Именно ownership отделяет project coordination от настоящего product management."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "problem_discovery": 1,
+        "product_metrics": 1,
+        "analytics_sql": 1,
+        "prioritization_roadmap": 1,
+        "requirements_delivery": 1,
+        "stakeholder_communication": 1,
+        "ownership_prioritization": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "problem_discovery": 2,
+        "product_metrics": 2,
+        "analytics_sql": 2,
+        "prioritization_roadmap": 2,
+        "requirements_delivery": 2,
+        "experimentation": 2,
+        "user_research": 1,
+        "execution_process": 1,
+        "stakeholder_communication": 2,
+        "ownership_prioritization": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "problem_discovery": 3,
+        "product_metrics": 3,
+        "analytics_sql": 3,
+        "prioritization_roadmap": 3,
+        "requirements_delivery": 3,
+        "experimentation": 3,
+        "user_research": 2,
+        "execution_process": 2,
+        "stakeholder_communication": 3,
+        "ownership_prioritization": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "Разбор продуктовой проблемы с метриками, JTBD-гипотезами и backlog из первых инициатив.",
+      "Мини-roadmap для SaaS-фичи с описанием проблемы, метрик и критериев успеха."
+    ],
+    "middle": [
+      "Полный цикл discovery-to-delivery для одной продуктовой зоны с A/B тестом и аналитикой эффекта.",
+      "Продуктовая система метрик и decision log для команды с регулярным product review."
+    ],
+    "senior": [
+      "Продуктовая стратегия на несколько кварталов с метриками уровня направления, ownership и governance процесса.",
+      "Стандартизированный operating model для discovery, delivery и product analytics внутри нескольких команд."
+    ]
+  }
+}

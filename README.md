@@ -42,6 +42,12 @@ app/
     devops_engineer.json
     qa_engineer.json
     data_analyst.json
+    data_engineer.json
+    java_backend_developer.json
+    ios_developer.json
+    product_manager.json
+    ui_ux_designer.json
+    ml_engineer.json
   services/
     assessment.py
     catalog.py
@@ -160,3 +166,9 @@ uv run python -m bot.main
 - `DevOps Engineer`
 - `QA Engineer`
 - `Data Analyst`
+- `Data Engineer`
+- `Java Backend Developer`
+- `iOS Developer`
+- `Product Manager`
+- `UI/UX Designer`
+- `ML Engineer`

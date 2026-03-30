@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "java_backend_developer",
+    "title": "Java Backend Developer",
+    "description": "Оценка backend-разработчика на Java с фокусом на Spring, базы данных и production delivery."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести backend-фичи и сервисы на Java.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за архитектуру сервисов, качество и технические решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий Java backend-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): Java, Spring Boot, SQL, Kafka, Docker, CI/CD, observability, security, какие сервисы или backend-фичи вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "backend_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень backend-базы на Java?",
+      "help_text": "Смотри на практику: Java core, Spring Boot, REST API и базы данных.",
+      "options": [
+        {
+          "id": "backend_foundation_0",
+          "label": "Учебные сервисы и простые CRUD",
+          "score_map": {
+            "java_core": 0,
+            "spring_backend": 0,
+            "databases_sql": 0
+          }
+        },
+        {
+          "id": "backend_foundation_1",
+          "label": "Рабочие API по понятному ТЗ",
+          "score_map": {
+            "java_core": 1,
+            "spring_backend": 1,
+            "databases_sql": 1
+          }
+        },
+        {
+          "id": "backend_foundation_2",
+          "label": "Сам(а) собираю backend-сервисы",
+          "score_map": {
+            "java_core": 2,
+            "spring_backend": 2,
+            "databases_sql": 2
+          }
+        },
+        {
+          "id": "backend_foundation_3",
+          "label": "Определяю стандарты и архитектуру сервисов",
+          "score_map": {
+            "java_core": 3,
+            "spring_backend": 3,
+            "databases_sql": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "delivery_quality",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с quality, integration и delivery?",
+      "help_text": "Сюда входят тесты, Docker, messaging, CI/CD, observability и security-практики.",
+      "options": [
+        {
+          "id": "delivery_quality_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "testing_quality": 0,
+            "docker_delivery": 0,
+            "messaging_integration": 0,
+            "ci_cd_cloud": 0,
+            "observability_security": 0
+          }
+        },
+        {
+          "id": "delivery_quality_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "testing_quality": 1,
+            "docker_delivery": 1,
+            "messaging_integration": 1,
+            "ci_cd_cloud": 1,
+            "observability_security": 1
+          }
+        },
+        {
+          "id": "delivery_quality_2",
+          "label": "Сам(а) настраивал(а) под реальные сервисы",
+          "score_map": {
+            "testing_quality": 2,
+            "docker_delivery": 2,
+            "messaging_integration": 2,
+            "ci_cd_cloud": 2,
+            "observability_security": 2
+          }
+        },
+        {
+          "id": "delivery_quality_3",
+          "label": "Определял(а) engineering practices и release quality",
+          "score_map": {
+            "testing_quality": 3,
+            "docker_delivery": 3,
+            "messaging_integration": 3,
+            "ci_cd_cloud": 3,
+            "observability_security": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в delivery и командной работе?",
+      "help_text": "Оцени, насколько ты ведешь backend-фичи end-to-end, принимаешь решения, работаешь с PR/review и влияешь на инженерный процесс команды.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "architecture_ownership": 0,
+            "collaboration_git": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые фичи end-to-end",
+          "score_map": {
+            "architecture_ownership": 1,
+            "collaboration_git": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду фичи, декомпозирую и даю review",
+          "score_map": {
+            "architecture_ownership": 2,
+            "collaboration_git": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Влияю на архитектуру и workflow команды",
+          "score_map": {
+            "architecture_ownership": 3,
+            "collaboration_git": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "java_core",
+      "title": "Java core",
+      "signals": ["java", "jvm", "collections", "streams", "multithreading"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль Java core, коллекции, многопоточность, обработку ошибок и качество кода.",
+      "why_it_matters": "Без сильной Java-базы трудно уверенно развивать backend-сервисы."
+    },
+    {
+      "id": "spring_backend",
+      "title": "Spring Boot и REST API",
+      "signals": ["spring", "spring_boot", "rest", "backend", "api"],
+      "weight": 1.4,
+      "roadmap_action": "Собери production-like сервис на Spring Boot с понятной структурой слоев, validation и auth.",
+      "why_it_matters": "Spring Boot — основа большинства Java backend-вакансий."
+    },
+    {
+      "id": "databases_sql",
+      "title": "SQL и базы данных",
+      "signals": ["postgresql", "mysql", "sql", "hibernate", "jpa", "database"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль SQL, схемы данных, индексы, миграции и понимание ORM под нагрузкой.",
+      "why_it_matters": "Рост в backend почти всегда упирается в качество работы с данными."
+    },
+    {
+      "id": "testing_quality",
+      "title": "Тестирование backend",
+      "signals": ["junit", "integration_tests", "unit_tests", "mockito", "tests"],
+      "weight": 1.2,
+      "roadmap_action": "Добавь unit и integration тесты, тестовые контейнеры, quality checks и уверенный релизный цикл.",
+      "why_it_matters": "Без тестов и проверок backend становится дорогим в поддержке."
+    },
+    {
+      "id": "docker_delivery",
+      "title": "Docker и delivery",
+      "signals": ["docker", "containers", "deployment", "compose", "kubernetes"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль контейнеризацию, сборку окружения, конфигурацию сервисов и путь до production deployment.",
+      "why_it_matters": "Контейнеризация и доставка изменений — базовая часть зрелого backend-процесса."
+    },
+    {
+      "id": "messaging_integration",
+      "title": "Messaging и интеграции",
+      "signals": ["kafka", "rabbitmq", "messaging", "integration", "events"],
+      "weight": 1.1,
+      "roadmap_action": "Разберись с event-driven integration, очередями, retry, idempotency и надежной интеграцией сервисов.",
+      "why_it_matters": "Многие backend-системы строятся вокруг асинхронных интеграций."
+    },
+    {
+      "id": "ci_cd_cloud",
+      "title": "CI/CD и cloud",
+      "signals": ["ci_cd", "github_actions", "gitlab_ci", "aws", "gcp", "cloud"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль пайплайны, environment management, релизные процессы и cloud deployment.",
+      "why_it_matters": "Качество delivery определяет скорость и надежность команды."
+    },
+    {
+      "id": "observability_security",
+      "title": "Observability и security",
+      "signals": ["logging", "monitoring", "tracing", "security", "oauth", "jwt"],
+      "weight": 1.0,
+      "roadmap_action": "Научись настраивать логи, метрики, tracing, health-check и базовые security patterns для сервисов.",
+      "why_it_matters": "Зрелый backend — это не только фичи, но и наблюдаемость с безопасностью."
+    },
+    {
+      "id": "architecture_ownership",
+      "title": "Ownership и архитектурная ответственность",
+      "signals": ["ownership", "architecture", "system_design", "feature_ownership"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй декомпозицию задач, оценку рисков, архитектурные решения и ownership по фичам.",
+      "why_it_matters": "Именно ownership обычно отделяет Middle/Senior от исполнителя задач."
+    },
+    {
+      "id": "collaboration_git",
+      "title": "Git и командная разработка",
+      "signals": ["git", "pull_request", "code_review", "rebase", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль работу с ветками, review, инженерными практиками и совместным развитием сервисов.",
+      "why_it_matters": "Сильный backend-разработчик растет внутри процесса команды, а не в одиночку."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "java_core": 1,
+        "spring_backend": 1,
+        "databases_sql": 1,
+        "testing_quality": 1,
+        "docker_delivery": 1,
+        "architecture_ownership": 1,
+        "collaboration_git": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "java_core": 2,
+        "spring_backend": 2,
+        "databases_sql": 2,
+        "testing_quality": 2,
+        "docker_delivery": 2,
+        "messaging_integration": 1,
+        "ci_cd_cloud": 1,
+        "observability_security": 1,
+        "architecture_ownership": 2,
+        "collaboration_git": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "java_core": 3,
+        "spring_backend": 3,
+        "databases_sql": 3,
+        "testing_quality": 3,
+        "docker_delivery": 3,
+        "messaging_integration": 2,
+        "ci_cd_cloud": 2,
+        "observability_security": 2,
+        "architecture_ownership": 3,
+        "collaboration_git": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "CRUD API на Spring Boot с PostgreSQL, Docker и базовыми unit-тестами.",
+      "Небольшой backend для личного кабинета с auth, миграциями и простым CI."
+    ],
+    "middle": [
+      "Order/notification backend с Kafka, Docker, integration tests и observability.",
+      "Микросервис на Spring Boot с CI/CD, health-check, tracing и production-like delivery."
+    ],
+    "senior": [
+      "Платформенный backend template со стандартами качества, security baseline и инженерными guardrails.",
+      "Набор интегрированных сервисов с event-driven architecture, observability и зрелым release process."
+    ]
+  }
+}
