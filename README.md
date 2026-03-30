@@ -1,6 +1,6 @@
 # SkillGap
 
-MVP-гибридного карьерного ассистента для одной роли: `Python Web Developer`.
+MVP-гибридного карьерного ассистента для нескольких популярных IT-ролей.
 
 Сейчас проект уже содержит:
 
@@ -14,7 +14,7 @@ MVP-гибридного карьерного ассистента для одн
 
 ## Что умеет MVP
 
-1. Пользователь открывает бота и выбирает роль `Python Web Developer`.
+1. Пользователь открывает бота и выбирает роль.
 2. Бот задает вопросы по матрице компетенций: часть кнопками, часть свободным текстом.
 3. Свободный текст отправляется в OpenRouter на extraction и превращается в структурированный профиль.
 4. Backend считает баллы, определяет текущий уровень и покрытие матрицы.
@@ -36,7 +36,12 @@ app/
   main.py
   repository.py
   schemas.py
-  data/python_web_developer.json
+  data/
+    python_web_developer.json
+    frontend_developer.json
+    devops_engineer.json
+    qa_engineer.json
+    data_analyst.json
   services/
     assessment.py
     catalog.py
@@ -127,9 +132,9 @@ uv run python -m bot.main
 
 ## Где менять матрицу
 
-Основная предметная логика лежит в файле:
+Основная предметная логика лежит в файлах:
 
-- `app/data/python_web_developer.json`
+- `app/data/*.json`
 
 Там можно править:
 
@@ -147,3 +152,11 @@ uv run python -m bot.main
 - vacancy matching;
 - LLM extraction для свободного текста;
 - более детальной аналитикой прогресса.
+
+## Доступные роли сейчас
+
+- `Python Web Developer`
+- `Frontend Developer`
+- `DevOps Engineer`
+- `QA Engineer`
+- `Data Analyst`
