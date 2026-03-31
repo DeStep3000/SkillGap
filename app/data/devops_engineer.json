@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "devops_engineer",
+    "title": "DevOps Engineer",
+    "description": "Оценка DevOps-инженера с фокусом на инфраструктуру, automation и reliability."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести инфраструктурные задачи и automation.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за надежность платформы, процессы и технические решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий DevOps-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): Linux, cloud, Docker/Kubernetes, CI/CD, Terraform, observability, secrets, incident response, базы и storage, какие сервисы или платформы вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "platform_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень инфраструктурной базы?",
+      "help_text": "Смотри на практику: Linux, сети, cloud, Docker, Kubernetes и то, насколько уверенно ты собираешь рабочее окружение для сервисов.",
+      "options": [
+        {
+          "id": "platform_foundation_0",
+          "label": "Учебные стенды и простые окружения",
+          "score_map": {
+            "linux_networking": 0,
+            "cloud_infrastructure": 0,
+            "containers_kubernetes": 0
+          }
+        },
+        {
+          "id": "platform_foundation_1",
+          "label": "Рабочие окружения по готовым инструкциям",
+          "score_map": {
+            "linux_networking": 1,
+            "cloud_infrastructure": 1,
+            "containers_kubernetes": 1
+          }
+        },
+        {
+          "id": "platform_foundation_2",
+          "label": "Сам(а) собираю и поддерживаю инфраструктуру сервисов",
+          "score_map": {
+            "linux_networking": 2,
+            "cloud_infrastructure": 2,
+            "containers_kubernetes": 2
+          }
+        },
+        {
+          "id": "platform_foundation_3",
+          "label": "Определяю platform standards и архитектуру среды",
+          "score_map": {
+            "linux_networking": 3,
+            "cloud_infrastructure": 3,
+            "containers_kubernetes": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "automation_reliability",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с automation и reliability?",
+      "help_text": "Сюда входят CI/CD, IaC, observability, secrets, storage и эксплуатационные практики.",
+      "options": [
+        {
+          "id": "automation_reliability_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "ci_cd_delivery": 0,
+            "iac_automation": 0,
+            "observability_sre": 0,
+            "security_secrets": 0,
+            "databases_storage": 0
+          }
+        },
+        {
+          "id": "automation_reliability_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "ci_cd_delivery": 1,
+            "iac_automation": 1,
+            "observability_sre": 1,
+            "security_secrets": 0,
+            "databases_storage": 1
+          }
+        },
+        {
+          "id": "automation_reliability_2",
+          "label": "Сам(а) настраивал(а) под реальные сервисы",
+          "score_map": {
+            "ci_cd_delivery": 2,
+            "iac_automation": 2,
+            "observability_sre": 2,
+            "security_secrets": 2,
+            "databases_storage": 2
+          }
+        },
+        {
+          "id": "automation_reliability_3",
+          "label": "Определял(а) reliability-практики и platform governance",
+          "score_map": {
+            "ci_cd_delivery": 3,
+            "iac_automation": 3,
+            "observability_sre": 3,
+            "security_secrets": 3,
+            "databases_storage": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в эксплуатации платформы и командной работе?",
+      "help_text": "Оцени, насколько ты ведешь инциденты, принимаешь platform-решения, работаешь с PR/review и влияешь на инженерный процесс команды.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "incident_ownership": 0,
+            "collaboration_git": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые инфраструктурные задачи end-to-end",
+          "score_map": {
+            "incident_ownership": 1,
+            "collaboration_git": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду сервисные изменения, декомпозирую и даю review",
+          "score_map": {
+            "incident_ownership": 2,
+            "collaboration_git": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Влияю на reliability и workflow команды",
+          "score_map": {
+            "incident_ownership": 3,
+            "collaboration_git": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "linux_networking",
+      "title": "Linux и сети",
+      "signals": ["linux", "bash", "networking", "tcp", "dns", "shell"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль Linux administration, диагностику процессов, networking basics и скриптовую автоматизацию.",
+      "why_it_matters": "Без уверенной базы Linux и сетей DevOps быстро упирается в поверхностное понимание инфраструктуры."
+    },
+    {
+      "id": "cloud_infrastructure",
+      "title": "Cloud infrastructure",
+      "signals": ["aws", "gcp", "azure", "cloud", "vpc", "iam"],
+      "weight": 1.4,
+      "roadmap_action": "Построй рабочую cloud-среду с сетями, IAM, сервисами compute и понятной структурой ресурсов.",
+      "why_it_matters": "Cloud — типовая среда для современных инфраструктурных вакансий."
+    },
+    {
+      "id": "containers_kubernetes",
+      "title": "Docker и Kubernetes",
+      "signals": ["docker", "kubernetes", "k8s", "helm", "containers"],
+      "weight": 1.3,
+      "roadmap_action": "Усиль контейнеризацию, orchestration, rollout patterns, конфигурацию workloads и troubleshooting в Kubernetes.",
+      "why_it_matters": "Контейнеры и оркестрация лежат в основе delivery большинства платформ."
+    },
+    {
+      "id": "ci_cd_delivery",
+      "title": "CI/CD и release delivery",
+      "signals": ["ci_cd", "github_actions", "gitlab_ci", "jenkins", "deployment"],
+      "weight": 1.2,
+      "roadmap_action": "Научись проектировать пайплайны, quality gates, безопасные релизы и rollback стратегии.",
+      "why_it_matters": "Быстрая и надежная доставка изменений — ключевая зона DevOps."
+    },
+    {
+      "id": "iac_automation",
+      "title": "IaC и automation",
+      "signals": ["terraform", "ansible", "iac", "automation", "provisioning"],
+      "weight": 1.2,
+      "roadmap_action": "Добавь Terraform/Ansible в реальный проект, отработай модульность, state management и автоматизацию рутинных операций.",
+      "why_it_matters": "Infrastructure as Code отличает системную работу от ручной поддержки."
+    },
+    {
+      "id": "observability_sre",
+      "title": "Observability и SRE-практики",
+      "signals": ["prometheus", "grafana", "logging", "monitoring", "alerts", "sli", "slo"],
+      "weight": 1.1,
+      "roadmap_action": "Усиль метрики, логи, трассировку, alerting и базовые SLI/SLO-практики.",
+      "why_it_matters": "Надежность платформы оценивается через наблюдаемость и управляемость инцидентов."
+    },
+    {
+      "id": "security_secrets",
+      "title": "Security и secrets management",
+      "signals": ["vault", "secrets", "security", "iam", "tls", "policies"],
+      "weight": 1.0,
+      "roadmap_action": "Разберись с хранением секретов, политиками доступа, security baseline и безопасной конфигурацией сервисов.",
+      "why_it_matters": "Платформа без безопасной конфигурации превращается в источник системных рисков."
+    },
+    {
+      "id": "databases_storage",
+      "title": "Databases и storage",
+      "signals": ["postgresql", "mysql", "redis", "storage", "backup", "replication"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль понимание storage, бэкапов, recovery, баз данных и эксплуатационных ограничений data-layer.",
+      "why_it_matters": "DevOps часто отвечает за надежность data-инфраструктуры не меньше, чем за compute."
+    },
+    {
+      "id": "incident_ownership",
+      "title": "Incident ownership и platform responsibility",
+      "signals": ["incident", "oncall", "rca", "postmortem", "ownership"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй incident response, RCA, postmortem, декомпозицию рисков и ownership по сервисам.",
+      "why_it_matters": "Именно ownership отличает исполнителя от инженера, который реально отвечает за надежность платформы."
+    },
+    {
+      "id": "collaboration_git",
+      "title": "Git и командная разработка",
+      "signals": ["git", "pull_request", "code_review", "rebase", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль review, workflow, инфраструктурный код-ревью и взаимодействие с командами разработки.",
+      "why_it_matters": "DevOps работает на стыке платформы и продуктовых команд, поэтому командный процесс критичен."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "linux_networking": 1,
+        "cloud_infrastructure": 1,
+        "containers_kubernetes": 1,
+        "ci_cd_delivery": 1,
+        "iac_automation": 1,
+        "incident_ownership": 1,
+        "collaboration_git": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "linux_networking": 2,
+        "cloud_infrastructure": 2,
+        "containers_kubernetes": 2,
+        "ci_cd_delivery": 2,
+        "iac_automation": 2,
+        "observability_sre": 2,
+        "security_secrets": 1,
+        "databases_storage": 1,
+        "incident_ownership": 2,
+        "collaboration_git": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "linux_networking": 3,
+        "cloud_infrastructure": 3,
+        "containers_kubernetes": 3,
+        "ci_cd_delivery": 3,
+        "iac_automation": 3,
+        "observability_sre": 3,
+        "security_secrets": 2,
+        "databases_storage": 2,
+        "incident_ownership": 3,
+        "collaboration_git": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "Локальная инфраструктура для веб-сервиса с Docker Compose, Nginx, PostgreSQL и базовым CI.",
+      "Небольшой Kubernetes-стенд с одним сервисом, логами, health-check и rollout через Helm."
+    ],
+    "middle": [
+      "Cloud-платформа для backend-сервиса с Terraform, CI/CD, observability и безопасным хранением секретов.",
+      "Platform-проект с Kubernetes, GitOps-подходом, SLO-метриками и автоматизированными релизами."
+    ],
+    "senior": [
+      "Внутренняя platform engineering stack с шаблонами сервисов, policy guardrails и стандартами reliability.",
+      "Multi-environment инфраструктура с incident drills, cost visibility, SRE-практиками и governance."
+    ]
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "data_analyst",
+    "title": "Data Analyst",
+    "description": "Оценка data analyst с фокусом на SQL, Python, BI и продуктовую аналитику."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести аналитические задачи и давать инсайты бизнесу.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за аналитический контур, качество решений и влияние на продукт.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий аналитический опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): SQL, Python, BI, продуктовые метрики, A/B тесты, ETL, визуализация, dashboards, общение со стейкхолдерами, какие аналитические задачи вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "analytics_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень аналитической базы?",
+      "help_text": "Смотри на практику: SQL, Python для анализа, статистика и то, насколько уверенно ты разбираешь данные.",
+      "options": [
+        {
+          "id": "analytics_foundation_0",
+          "label": "Учебные датасеты и простые выборки",
+          "score_map": {
+            "sql_analytics": 0,
+            "python_analysis": 0,
+            "statistics_experimentation": 0
+          }
+        },
+        {
+          "id": "analytics_foundation_1",
+          "label": "Рабочие отчеты и базовые анализы по понятному запросу",
+          "score_map": {
+            "sql_analytics": 1,
+            "python_analysis": 1,
+            "statistics_experimentation": 1
+          }
+        },
+        {
+          "id": "analytics_foundation_2",
+          "label": "Сам(а) собираю анализ и проверяю гипотезы",
+          "score_map": {
+            "sql_analytics": 2,
+            "python_analysis": 2,
+            "statistics_experimentation": 2
+          }
+        },
+        {
+          "id": "analytics_foundation_3",
+          "label": "Определяю аналитический подход и методологию",
+          "score_map": {
+            "sql_analytics": 3,
+            "python_analysis": 3,
+            "statistics_experimentation": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "insights_delivery",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с delivery аналитических инсайтов?",
+      "help_text": "Сюда входят BI, чистка данных, метрики продукта, визуализация, ETL и data modeling.",
+      "options": [
+        {
+          "id": "insights_delivery_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "bi_dashboards": 0,
+            "data_cleaning": 0,
+            "product_metrics": 0,
+            "data_visualization": 0,
+            "etl_data_modeling": 0
+          }
+        },
+        {
+          "id": "insights_delivery_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "bi_dashboards": 1,
+            "data_cleaning": 1,
+            "product_metrics": 1,
+            "data_visualization": 1,
+            "etl_data_modeling": 0
+          }
+        },
+        {
+          "id": "insights_delivery_2",
+          "label": "Сам(а) собираю отчеты, витрины и продуктовые разборы",
+          "score_map": {
+            "bi_dashboards": 2,
+            "data_cleaning": 2,
+            "product_metrics": 2,
+            "data_visualization": 2,
+            "etl_data_modeling": 2
+          }
+        },
+        {
+          "id": "insights_delivery_3",
+          "label": "Определяю аналитические стандарты и контур метрик",
+          "score_map": {
+            "bi_dashboards": 3,
+            "data_cleaning": 3,
+            "product_metrics": 3,
+            "data_visualization": 3,
+            "etl_data_modeling": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в аналитике и работе со стейкхолдерами?",
+      "help_text": "Оцени, насколько ты сам(а) формулируешь задачу, споришь с постановкой, защищаешь выводы и двигаешь изменения на основе данных.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "stakeholder_communication": 0,
+            "ownership_prioritization": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые аналитические задачи end-to-end",
+          "score_map": {
+            "stakeholder_communication": 1,
+            "ownership_prioritization": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду аналитические инициативы и влияю на решения",
+          "score_map": {
+            "stakeholder_communication": 2,
+            "ownership_prioritization": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Формирую аналитическую повестку и влияю на продукт",
+          "score_map": {
+            "stakeholder_communication": 3,
+            "ownership_prioritization": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "sql_analytics",
+      "title": "SQL",
+      "signals": ["sql", "postgresql", "bigquery", "clickhouse", "queries"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль SQL, сложные запросы, агрегации, оконные функции и работу с большими аналитическими выборками.",
+      "why_it_matters": "SQL — базовый язык аналитика, без которого трудно уверенно работать с данными."
+    },
+    {
+      "id": "python_analysis",
+      "title": "Python для анализа данных",
+      "signals": ["python", "pandas", "numpy", "jupyter", "analysis"],
+      "weight": 1.3,
+      "roadmap_action": "Отработай pandas, обработку данных, визуализацию и повторяемый аналитический workflow в Python.",
+      "why_it_matters": "Python нужен там, где SQL и BI уже не закрывают глубину анализа."
+    },
+    {
+      "id": "statistics_experimentation",
+      "title": "Статистика и эксперименты",
+      "signals": ["statistics", "ab_test", "hypothesis", "significance", "confidence_interval"],
+      "weight": 1.3,
+      "roadmap_action": "Усиль статистику, дизайн экспериментов, интерпретацию метрик и валидацию гипотез.",
+      "why_it_matters": "Без статистики аналитик рискует делать уверенные, но неверные выводы."
+    },
+    {
+      "id": "bi_dashboards",
+      "title": "BI и dashboards",
+      "signals": ["tableau", "power_bi", "metabase", "superset", "dashboard"],
+      "weight": 1.1,
+      "roadmap_action": "Научись строить понятные dashboards, поддерживать их актуальность и связывать их с решениями команды.",
+      "why_it_matters": "BI — один из основных способов доставлять аналитику бизнесу."
+    },
+    {
+      "id": "data_cleaning",
+      "title": "Подготовка и чистка данных",
+      "signals": ["data_cleaning", "data_quality", "transformation", "validation"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль очистку данных, валидацию, нормализацию и диагностику качества источников.",
+      "why_it_matters": "Даже хороший анализ ломается на грязных данных."
+    },
+    {
+      "id": "product_metrics",
+      "title": "Продуктовые метрики",
+      "signals": ["product_metrics", "retention", "conversion", "funnel", "north_star"],
+      "weight": 1.2,
+      "roadmap_action": "Разберись с продуктовой воронкой, retention, unit economics и системой метрик для принятия решений.",
+      "why_it_matters": "Ценность аналитика определяется тем, как его работа влияет на продукт и бизнес."
+    },
+    {
+      "id": "data_visualization",
+      "title": "Визуализация и storytelling",
+      "signals": ["visualization", "storytelling", "charts", "presentation", "insights"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль визуализацию, структуру выводов и подачу инсайтов так, чтобы по ним было легко действовать.",
+      "why_it_matters": "Сильный анализ бесполезен, если его невозможно быстро понять и применить."
+    },
+    {
+      "id": "etl_data_modeling",
+      "title": "ETL и data modeling",
+      "signals": ["etl", "dbt", "data_modeling", "pipelines", "transformations"],
+      "weight": 1.0,
+      "roadmap_action": "Добавь опыт с витринами, ETL/ELT, data modeling и аналитическими слоями данных.",
+      "why_it_matters": "Зрелая аналитика требует не только разовых запросов, но и устойчивой data-подложки."
+    },
+    {
+      "id": "stakeholder_communication",
+      "title": "Коммуникация со стейкхолдерами",
+      "signals": ["communication", "stakeholders", "product", "marketing", "business"],
+      "weight": 1.1,
+      "roadmap_action": "Практикуй уточнение задач, защиту выводов, контекстный разговор с бизнесом и правильную постановку вопросов.",
+      "why_it_matters": "Аналитика — это интерфейс между данными и решением, а значит коммуникация критична."
+    },
+    {
+      "id": "ownership_prioritization",
+      "title": "Ownership и приоритизация аналитики",
+      "signals": ["ownership", "prioritization", "problem_framing", "decision_making"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль формулирование аналитических задач, приоритизацию исследовательской работы и влияние на roadmap решений.",
+      "why_it_matters": "Ownership отделяет исполнителя отчетов от аналитика, который реально двигает продукт."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "sql_analytics": 1,
+        "python_analysis": 1,
+        "statistics_experimentation": 1,
+        "bi_dashboards": 1,
+        "product_metrics": 1,
+        "stakeholder_communication": 1,
+        "ownership_prioritization": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "sql_analytics": 2,
+        "python_analysis": 2,
+        "statistics_experimentation": 2,
+        "bi_dashboards": 2,
+        "data_cleaning": 2,
+        "product_metrics": 2,
+        "data_visualization": 1,
+        "etl_data_modeling": 1,
+        "stakeholder_communication": 2,
+        "ownership_prioritization": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "sql_analytics": 3,
+        "python_analysis": 3,
+        "statistics_experimentation": 3,
+        "bi_dashboards": 3,
+        "data_cleaning": 3,
+        "product_metrics": 3,
+        "data_visualization": 2,
+        "etl_data_modeling": 2,
+        "stakeholder_communication": 3,
+        "ownership_prioritization": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "Дашборд по продуктовой воронке с SQL, BI и краткими выводами для команды.",
+      "Анализ пользовательского поведения на датасете с Python, pandas и базовой визуализацией."
+    ],
+    "middle": [
+      "Продуктовый аналитический контур с витринами, метриками, BI и проверкой гипотез.",
+      "A/B testing workflow с подготовкой данных, статистической проверкой и презентацией инсайтов."
+    ],
+    "senior": [
+      "Система продуктовых метрик и аналитических стандартов для нескольких команд с ownership-подходом.",
+      "Аналитическая платформа с data modeling, метриками верхнего уровня и процессом принятия решений на основе данных."
+    ]
+  }
+}

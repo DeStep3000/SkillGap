@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "data_engineer",
+    "title": "Data Engineer",
+    "description": "Оценка data engineer с фокусом на пайплайны данных, storage и reliability data-platform."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести data pipelines и storage-задачи.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за data platform, reliability и технические решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий опыт в data engineering, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): Python, SQL, Spark, Airflow, Kafka, DWH/lakehouse, dbt, cloud, тестирование данных, мониторинг, какие пайплайны или платформенные задачи вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "data_platform_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень базы в data engineering?",
+      "help_text": "Смотри на практику: Python/SQL, моделирование данных и работа с warehouse/lakehouse.",
+      "options": [
+        {
+          "id": "data_platform_foundation_0",
+          "label": "Учебные пайплайны и простые выборки",
+          "score_map": {
+            "python_sql": 0,
+            "data_modeling": 0,
+            "warehouses_lakehouses": 0
+          }
+        },
+        {
+          "id": "data_platform_foundation_1",
+          "label": "Рабочие пайплайны по понятному шаблону",
+          "score_map": {
+            "python_sql": 1,
+            "data_modeling": 1,
+            "warehouses_lakehouses": 1
+          }
+        },
+        {
+          "id": "data_platform_foundation_2",
+          "label": "Сам(а) собираю рабочие data flows",
+          "score_map": {
+            "python_sql": 2,
+            "data_modeling": 2,
+            "warehouses_lakehouses": 2
+          }
+        },
+        {
+          "id": "data_platform_foundation_3",
+          "label": "Определяю стандарты и архитектуру data-layer",
+          "score_map": {
+            "python_sql": 3,
+            "data_modeling": 3,
+            "warehouses_lakehouses": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "pipelines_reliability",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с пайплайнами, automation и reliability?",
+      "help_text": "Сюда входят orchestration, ETL/ELT, cloud, streaming, тестирование данных и эксплуатационные практики.",
+      "options": [
+        {
+          "id": "pipelines_reliability_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "orchestration_pipelines": 0,
+            "etl_elt": 0,
+            "cloud_platforms": 0,
+            "streaming_reliability": 0,
+            "testing_data_quality": 0
+          }
+        },
+        {
+          "id": "pipelines_reliability_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "orchestration_pipelines": 1,
+            "etl_elt": 1,
+            "cloud_platforms": 1,
+            "streaming_reliability": 0,
+            "testing_data_quality": 1
+          }
+        },
+        {
+          "id": "pipelines_reliability_2",
+          "label": "Сам(а) настраивал(а) под реальные дата-продукты",
+          "score_map": {
+            "orchestration_pipelines": 2,
+            "etl_elt": 2,
+            "cloud_platforms": 2,
+            "streaming_reliability": 2,
+            "testing_data_quality": 2
+          }
+        },
+        {
+          "id": "pipelines_reliability_3",
+          "label": "Определял(а) reliability и platform practices",
+          "score_map": {
+            "orchestration_pipelines": 3,
+            "etl_elt": 3,
+            "cloud_platforms": 3,
+            "streaming_reliability": 3,
+            "testing_data_quality": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в data platform и командной работе?",
+      "help_text": "Оцени, насколько ты ведешь задачи end-to-end, принимаешь архитектурные решения, работаешь с PR/review и влияешь на инженерный процесс.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "architecture_ownership": 0,
+            "collaboration_git": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые data-задачи end-to-end",
+          "score_map": {
+            "architecture_ownership": 1,
+            "collaboration_git": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду пайплайны, декомпозирую и даю review",
+          "score_map": {
+            "architecture_ownership": 2,
+            "collaboration_git": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Влияю на архитектуру и workflow data-команды",
+          "score_map": {
+            "architecture_ownership": 3,
+            "collaboration_git": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "python_sql",
+      "title": "Python и SQL для data engineering",
+      "signals": ["python", "sql", "pandas", "queries", "etl"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль Python для data workloads, SQL, обработку данных и надежную структуру пайплайнового кода.",
+      "why_it_matters": "Это базовый язык data engineer для обработки и перемещения данных."
+    },
+    {
+      "id": "data_modeling",
+      "title": "Data modeling",
+      "signals": ["data_modeling", "star_schema", "dimensions", "facts", "dbt"],
+      "weight": 1.3,
+      "roadmap_action": "Разберись с витринами, grain, слоями данных, моделированием таблиц и качеством аналитического слоя.",
+      "why_it_matters": "Без хорошего моделирования data-platform быстро становится хаотичной."
+    },
+    {
+      "id": "warehouses_lakehouses",
+      "title": "Warehouse и lakehouse",
+      "signals": ["warehouse", "lakehouse", "bigquery", "snowflake", "clickhouse", "s3"],
+      "weight": 1.2,
+      "roadmap_action": "Отработай storage patterns, partitioning, кластеризацию, организацию слоев и стоимость хранения.",
+      "why_it_matters": "Хранилище определяет масштабируемость и цену всей data-системы."
+    },
+    {
+      "id": "orchestration_pipelines",
+      "title": "Orchestration и pipelines",
+      "signals": ["airflow", "dagster", "orchestration", "pipelines", "scheduling"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль orchestration, расписания, зависимости, retries и поддержку data workflows.",
+      "why_it_matters": "Пайплайны без orchestration быстро становятся хрупкими и непрозрачными."
+    },
+    {
+      "id": "etl_elt",
+      "title": "ETL/ELT и transformations",
+      "signals": ["etl", "elt", "transformations", "dbt", "spark"],
+      "weight": 1.2,
+      "roadmap_action": "Добавь опыт с трансформациями данных, инкрементальной загрузкой и надежными processing patterns.",
+      "why_it_matters": "Это ядро повседневной работы data engineer."
+    },
+    {
+      "id": "cloud_platforms",
+      "title": "Cloud data platforms",
+      "signals": ["aws", "gcp", "azure", "cloud", "emr", "glue", "dataproc"],
+      "weight": 1.1,
+      "roadmap_action": "Усиль работу с managed data services, IAM, storage, compute и cost-aware platform decisions.",
+      "why_it_matters": "Большинство data-систем живут в облаке, и это влияет на архитектуру напрямую."
+    },
+    {
+      "id": "streaming_reliability",
+      "title": "Streaming и reliability",
+      "signals": ["kafka", "streaming", "reliability", "idempotency", "exactly_once"],
+      "weight": 1.0,
+      "roadmap_action": "Разберись со streaming patterns, доставкой событий, idempotency и отказоустойчивостью потоков.",
+      "why_it_matters": "Потоковые данные резко повышают требования к надежности платформы."
+    },
+    {
+      "id": "testing_data_quality",
+      "title": "Тестирование данных и data quality",
+      "signals": ["tests", "data_quality", "great_expectations", "validation", "quality_checks"],
+      "weight": 1.0,
+      "roadmap_action": "Добавь тесты на схемы, свежесть, полноту, аномалии и критические data-contracts.",
+      "why_it_matters": "Без data quality любое доверие к аналитике и ML быстро теряется."
+    },
+    {
+      "id": "architecture_ownership",
+      "title": "Ownership и архитектура data-platform",
+      "signals": ["ownership", "architecture", "data_platform", "system_design"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй декомпозицию платформенных задач, архитектурные решения и ownership по critical data flows.",
+      "why_it_matters": "Именно ownership отделяет просто разработчика пайплайнов от зрелого data engineer."
+    },
+    {
+      "id": "collaboration_git",
+      "title": "Git и командная разработка",
+      "signals": ["git", "pull_request", "code_review", "rebase", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль работу с review, ветками, инженерными стандартами и совместным развитием data-кода.",
+      "why_it_matters": "Data engineering живет в общем инженерном процессе, а не отдельно от команды."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "python_sql": 1,
+        "data_modeling": 1,
+        "warehouses_lakehouses": 1,
+        "orchestration_pipelines": 1,
+        "etl_elt": 1,
+        "architecture_ownership": 1,
+        "collaboration_git": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "python_sql": 2,
+        "data_modeling": 2,
+        "warehouses_lakehouses": 2,
+        "orchestration_pipelines": 2,
+        "etl_elt": 2,
+        "cloud_platforms": 2,
+        "streaming_reliability": 1,
+        "testing_data_quality": 1,
+        "architecture_ownership": 2,
+        "collaboration_git": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "python_sql": 3,
+        "data_modeling": 3,
+        "warehouses_lakehouses": 3,
+        "orchestration_pipelines": 3,
+        "etl_elt": 3,
+        "cloud_platforms": 3,
+        "streaming_reliability": 2,
+        "testing_data_quality": 2,
+        "architecture_ownership": 3,
+        "collaboration_git": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "ETL-пайплайн из API в PostgreSQL или ClickHouse с расписанием и базовыми проверками качества.",
+      "Небольшой analytics data mart с Python, SQL и витриной для отчетности."
+    ],
+    "middle": [
+      "Data platform mini-stack с Airflow, dbt, warehouse и мониторингом свежести данных.",
+      "Batch + streaming pipeline с Kafka, transformations, quality checks и cloud storage."
+    ],
+    "senior": [
+      "Платформа данных с lakehouse-подходом, SLA на пайплайны, data contracts и engineering standards.",
+      "Масштабируемый data platform template с cost control, observability и архитектурными практиками."
+    ]
+  }
+}

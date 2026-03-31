@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "ui_ux_designer",
+    "title": "UI/UX Designer",
+    "description": "Оценка UI/UX designer с фокусом на research, интерфейсы, дизайн-системы и продуктовую работу."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести UX/UI-задачи и влиять на качество продукта.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за дизайн-систему, процессы и продуктовые решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий UI/UX-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): UX research, user flows, Figma, design systems, prototype, usability, accessibility, handoff, общение с продуктом и разработкой, какие задачи или продукты вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "design_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень дизайн-базы?",
+      "help_text": "Смотри на практику: UX research, информационная архитектура и visual/UI design.",
+      "options": [
+        {
+          "id": "design_foundation_0",
+          "label": "Учебные макеты и простые сценарии",
+          "score_map": {
+            "ux_research": 0,
+            "information_architecture": 0,
+            "ui_visual_design": 0
+          }
+        },
+        {
+          "id": "design_foundation_1",
+          "label": "Рабочие интерфейсы по понятному контексту",
+          "score_map": {
+            "ux_research": 1,
+            "information_architecture": 1,
+            "ui_visual_design": 1
+          }
+        },
+        {
+          "id": "design_foundation_2",
+          "label": "Сам(а) проектирую пользовательские сценарии и UI",
+          "score_map": {
+            "ux_research": 2,
+            "information_architecture": 2,
+            "ui_visual_design": 2
+          }
+        },
+        {
+          "id": "design_foundation_3",
+          "label": "Определяю UX/UI standards и подходы",
+          "score_map": {
+            "ux_research": 3,
+            "information_architecture": 3,
+            "ui_visual_design": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "design_delivery",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с delivery дизайна и продуктовым качеством?",
+      "help_text": "Сюда входят дизайн-системы, прототипирование, метрики, accessibility, handoff и взаимодействие с разработкой.",
+      "options": [
+        {
+          "id": "design_delivery_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "design_systems": 0,
+            "prototyping_flows": 0,
+            "product_metrics": 0,
+            "accessibility_usability": 0,
+            "handoff_collaboration": 0
+          }
+        },
+        {
+          "id": "design_delivery_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "design_systems": 1,
+            "prototyping_flows": 1,
+            "product_metrics": 1,
+            "accessibility_usability": 1,
+            "handoff_collaboration": 1
+          }
+        },
+        {
+          "id": "design_delivery_2",
+          "label": "Сам(а) веду дизайн-цикл под реальные продукты",
+          "score_map": {
+            "design_systems": 2,
+            "prototyping_flows": 2,
+            "product_metrics": 2,
+            "accessibility_usability": 2,
+            "handoff_collaboration": 2
+          }
+        },
+        {
+          "id": "design_delivery_3",
+          "label": "Определяю design practices и quality standards",
+          "score_map": {
+            "design_systems": 3,
+            "prototyping_flows": 3,
+            "product_metrics": 3,
+            "accessibility_usability": 3,
+            "handoff_collaboration": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в коммуникации и продуктовом ownership?",
+      "help_text": "Оцени, насколько ты формулируешь дизайн-решения, защищаешь их перед командой и влияешь на продуктовую повестку.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "stakeholder_communication": 0,
+            "ownership_prioritization": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые дизайн-задачи end-to-end",
+          "score_map": {
+            "stakeholder_communication": 1,
+            "ownership_prioritization": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду дизайн-инициативы и влияю на решения",
+          "score_map": {
+            "stakeholder_communication": 2,
+            "ownership_prioritization": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Формирую дизайн-повестку и приоритеты",
+          "score_map": {
+            "stakeholder_communication": 3,
+            "ownership_prioritization": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "ux_research",
+      "title": "UX research",
+      "signals": ["ux_research", "interviews", "usability_testing", "research", "insights"],
+      "weight": 1.3,
+      "roadmap_action": "Усиль UX research, интервью, анализ пользовательских сценариев и синтез инсайтов.",
+      "why_it_matters": "Хороший дизайн начинается с понимания пользователя, а не с экрана."
+    },
+    {
+      "id": "information_architecture",
+      "title": "Информационная архитектура",
+      "signals": ["information_architecture", "user_flows", "navigation", "structure", "ia"],
+      "weight": 1.2,
+      "roadmap_action": "Практикуй user flows, структуру экранов, сценарии навигации и декомпозицию сложных интерфейсов.",
+      "why_it_matters": "Сильная IA определяет, насколько интерфейс вообще понятен и usable."
+    },
+    {
+      "id": "ui_visual_design",
+      "title": "UI и visual design",
+      "signals": ["ui", "visual_design", "figma", "typography", "layout", "design"],
+      "weight": 1.3,
+      "roadmap_action": "Усиль визуальную иерархию, композицию, типографику, color system и аккуратную работу с интерфейсом.",
+      "why_it_matters": "Визуальное качество интерфейса влияет на доверие, понятность и восприятие продукта."
+    },
+    {
+      "id": "design_systems",
+      "title": "Design systems",
+      "signals": ["design_system", "components", "tokens", "ui_kit", "system"],
+      "weight": 1.1,
+      "roadmap_action": "Добавь практику работы с компонентами, tokens, consistency и системным дизайном.",
+      "why_it_matters": "Design system повышает скорость и качество продукта на масштабе."
+    },
+    {
+      "id": "prototyping_flows",
+      "title": "Прототипирование и flows",
+      "signals": ["prototype", "flows", "wireframes", "interaction", "motion"],
+      "weight": 1.0,
+      "roadmap_action": "Отработай wireframes, интерактивные прототипы и быстрые способы проверки сценариев до разработки.",
+      "why_it_matters": "Прототипирование позволяет тестировать идеи до дорогой реализации."
+    },
+    {
+      "id": "product_metrics",
+      "title": "Продуктовые метрики и дизайн-эффект",
+      "signals": ["metrics", "conversion", "retention", "funnels", "design_impact"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль связь дизайн-решений с продуктовой метрикой, поведением пользователей и результатом бизнеса.",
+      "why_it_matters": "Зрелый дизайнер думает не только об эстетике, но и об эффекте решения."
+    },
+    {
+      "id": "accessibility_usability",
+      "title": "Accessibility и usability",
+      "signals": ["accessibility", "a11y", "usability", "wcag", "inclusive_design"],
+      "weight": 1.0,
+      "roadmap_action": "Разберись с usability heuristics, доступностью, контрастами, формами и inclusive design-практиками.",
+      "why_it_matters": "Качественный интерфейс должен быть понятным и доступным разным пользователям."
+    },
+    {
+      "id": "handoff_collaboration",
+      "title": "Handoff и взаимодействие с разработкой",
+      "signals": ["handoff", "dev_collaboration", "specs", "figma_handoff", "implementation"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль handoff, спецификации, совместную проверку реализации и рабочий процесс с разработкой.",
+      "why_it_matters": "Даже сильный макет не принесет пользы, если его нельзя качественно реализовать."
+    },
+    {
+      "id": "stakeholder_communication",
+      "title": "Коммуникация со стейкхолдерами",
+      "signals": ["communication", "stakeholders", "product", "defense", "presentation"],
+      "weight": 1.2,
+      "roadmap_action": "Практикуй защиту решений, презентацию аргументов и alignment между продуктом, дизайном и разработкой.",
+      "why_it_matters": "Дизайн работает внутри команды, а не как отдельное ремесло."
+    },
+    {
+      "id": "ownership_prioritization",
+      "title": "Ownership и приоритизация дизайна",
+      "signals": ["ownership", "prioritization", "design_strategy", "decision_making"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль ownership по пользовательскому опыту, приоритизацию задач и влияние на продуктовую повестку.",
+      "why_it_matters": "Ownership отделяет исполнителя макетов от зрелого product designer."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "ux_research": 1,
+        "information_architecture": 1,
+        "ui_visual_design": 1,
+        "design_systems": 1,
+        "handoff_collaboration": 1,
+        "stakeholder_communication": 1,
+        "ownership_prioritization": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "ux_research": 2,
+        "information_architecture": 2,
+        "ui_visual_design": 2,
+        "design_systems": 2,
+        "prototyping_flows": 2,
+        "product_metrics": 1,
+        "accessibility_usability": 1,
+        "handoff_collaboration": 2,
+        "stakeholder_communication": 2,
+        "ownership_prioritization": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "ux_research": 3,
+        "information_architecture": 3,
+        "ui_visual_design": 3,
+        "design_systems": 3,
+        "prototyping_flows": 3,
+        "product_metrics": 2,
+        "accessibility_usability": 2,
+        "handoff_collaboration": 3,
+        "stakeholder_communication": 3,
+        "ownership_prioritization": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "Редизайн одного пользовательского сценария с user flow, Figma-макетами и handoff для разработки.",
+      "Мини-дизайн-система для pet-проекта с компонентами, состояниями и базовыми accessibility checks."
+    ],
+    "middle": [
+      "Полный UX/UI цикл для продуктовой фичи: research, flows, prototype, usability check и release handoff.",
+      "Дизайн-система и process для команды с компонентами, tokens, документацией и product linkage."
+    ],
+    "senior": [
+      "Product design operating model для нескольких продуктовых команд с системой приоритизации и design governance.",
+      "Сложный многомодульный продукт с системным дизайном, метриками качества UX и зрелым handoff process."
+    ]
+  }
+}

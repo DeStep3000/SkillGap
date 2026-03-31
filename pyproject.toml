@@ -1,0 +1,19 @@
+[project]
+name = "skillgap"
+version = "0.1.0"
+description = "Career gap analysis assistant for Python Web Developers"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "aiogram>=3.18,<4.0",
+    "beautifulsoup4>=4.13,<5.0",
+    "fastapi>=0.115,<1.0",
+    "httpx>=0.28,<1.0",
+    "psycopg[binary]>=3.2,<4.0",
+    "python-dotenv>=1.0,<2.0",
+    "sqlalchemy>=2.0,<3.0",
+    "uvicorn[standard]>=0.34,<1.0",
+]
+
+[tool.uv]
+package = false

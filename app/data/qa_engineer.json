@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "qa_engineer",
+    "title": "QA Engineer",
+    "description": "Оценка QA-инженера с фокусом на test design, automation и quality practices."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести quality-задачи и automation.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за test strategy, качество продукта и инженерные процессы.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий QA-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): test design, ручное тестирование, API/UI automation, SQL, CI/CD, debugging, test strategy, баг-трекинг, коммуникация с командой, какие quality-задачи вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "qa_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень QA-базы?",
+      "help_text": "Смотри на практику: test design, ручное тестирование, работа с SQL и понимание поведения продукта.",
+      "options": [
+        {
+          "id": "qa_foundation_0",
+          "label": "Учебные проверки и простые чек-листы",
+          "score_map": {
+            "test_design": 0,
+            "manual_testing": 0,
+            "sql_databases": 0
+          }
+        },
+        {
+          "id": "qa_foundation_1",
+          "label": "Рабочие проверки по понятным сценариям",
+          "score_map": {
+            "test_design": 1,
+            "manual_testing": 1,
+            "sql_databases": 1
+          }
+        },
+        {
+          "id": "qa_foundation_2",
+          "label": "Сам(а) проектирую проверки и тестовые сценарии",
+          "score_map": {
+            "test_design": 2,
+            "manual_testing": 2,
+            "sql_databases": 2
+          }
+        },
+        {
+          "id": "qa_foundation_3",
+          "label": "Определяю test approach и quality standards",
+          "score_map": {
+            "test_design": 3,
+            "manual_testing": 3,
+            "sql_databases": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "automation_quality",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с automation и quality tooling?",
+      "help_text": "Сюда входят API testing, UI automation, scripting, CI/CD, debugging и эксплуатационные quality-практики.",
+      "options": [
+        {
+          "id": "automation_quality_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "api_testing": 0,
+            "ui_automation": 0,
+            "automation_scripting": 0,
+            "ci_cd_quality": 0,
+            "debugging_observability": 0
+          }
+        },
+        {
+          "id": "automation_quality_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "api_testing": 1,
+            "ui_automation": 1,
+            "automation_scripting": 1,
+            "ci_cd_quality": 1,
+            "debugging_observability": 1
+          }
+        },
+        {
+          "id": "automation_quality_2",
+          "label": "Сам(а) настраивал(а) automation под реальные проекты",
+          "score_map": {
+            "api_testing": 2,
+            "ui_automation": 2,
+            "automation_scripting": 2,
+            "ci_cd_quality": 2,
+            "debugging_observability": 2
+          }
+        },
+        {
+          "id": "automation_quality_3",
+          "label": "Определял(а) automation strategy и quality gate",
+          "score_map": {
+            "api_testing": 3,
+            "ui_automation": 3,
+            "automation_scripting": 3,
+            "ci_cd_quality": 3,
+            "debugging_observability": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в quality ownership и командной работе?",
+      "help_text": "Оцени, насколько ты влияешь на качество продукта, ведешь тестовую стратегию, работаешь с командой и двигаешь улучшения процесса.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "quality_ownership": 0,
+            "stakeholder_communication": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые quality-задачи end-to-end",
+          "score_map": {
+            "quality_ownership": 1,
+            "stakeholder_communication": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду quality-инициативы и даю обратную связь команде",
+          "score_map": {
+            "quality_ownership": 2,
+            "stakeholder_communication": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Влияю на quality culture и продуктовый процесс",
+          "score_map": {
+            "quality_ownership": 3,
+            "stakeholder_communication": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "test_design",
+      "title": "Test design",
+      "signals": ["test_design", "test_cases", "checklists", "equivalence", "boundary_value"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль тест-дизайн, техники разбиения на классы, граничные значения и продуманное покрытие сценариев.",
+      "why_it_matters": "Без сильного test design QA быстро сводится к механической проверке."
+    },
+    {
+      "id": "manual_testing",
+      "title": "Manual testing",
+      "signals": ["manual_testing", "regression", "smoke", "exploratory", "bug_report"],
+      "weight": 1.3,
+      "roadmap_action": "Отработай ручное тестирование, exploratory-подход, воспроизводимость багов и точную фиксацию дефектов.",
+      "why_it_matters": "Это база, на которой строится все остальное качество."
+    },
+    {
+      "id": "sql_databases",
+      "title": "SQL и работа с данными",
+      "signals": ["sql", "postgresql", "mysql", "database", "queries"],
+      "weight": 1.1,
+      "roadmap_action": "Усиль SQL, проверку данных, джойны, агрегации и валидацию состояния системы через БД.",
+      "why_it_matters": "Многие дефекты и проверки качества лежат на уровне данных, а не только UI."
+    },
+    {
+      "id": "api_testing",
+      "title": "API testing",
+      "signals": ["api_testing", "postman", "rest", "graphql", "contract_testing"],
+      "weight": 1.2,
+      "roadmap_action": "Отработай API-проверки, контракты, статусы, схемы, auth, негативные сценарии и интеграционные цепочки.",
+      "why_it_matters": "API — критический слой для quality assurance в современных продуктах."
+    },
+    {
+      "id": "ui_automation",
+      "title": "UI automation",
+      "signals": ["selenium", "playwright", "cypress", "ui_automation", "e2e"],
+      "weight": 1.1,
+      "roadmap_action": "Построй устойчивые UI-автотесты с понятной архитектурой, селекторами, фикстурами и надежным запуском.",
+      "why_it_matters": "UI automation помогает держать регрессию под контролем, если сделана инженерно грамотно."
+    },
+    {
+      "id": "automation_scripting",
+      "title": "Automation scripting",
+      "signals": ["python", "javascript", "framework", "automation", "pytest"],
+      "weight": 1.1,
+      "roadmap_action": "Усиль кодовую базу автотестов, работу с языком, слоями framework и реиспользуемыми утилитами.",
+      "why_it_matters": "Automation требует инженерной дисциплины, а не только набора сценариев."
+    },
+    {
+      "id": "ci_cd_quality",
+      "title": "CI/CD и quality gate",
+      "signals": ["ci_cd", "pipeline", "quality_gate", "github_actions", "gitlab_ci"],
+      "weight": 1.0,
+      "roadmap_action": "Научись встраивать автотесты в пайплайны, quality gate и релизный процесс команды.",
+      "why_it_matters": "Ценность тестирования растет, когда оно встроено в delivery, а не существует отдельно."
+    },
+    {
+      "id": "debugging_observability",
+      "title": "Debugging и observability",
+      "signals": ["logs", "monitoring", "debugging", "observability", "tracing"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль работу с логами, мониторингом, трассировкой, воспроизведением дефектов и поиском корневых причин.",
+      "why_it_matters": "Сильный QA ищет не только симптом, но и источник проблем качества."
+    },
+    {
+      "id": "quality_ownership",
+      "title": "Quality ownership",
+      "signals": ["quality_strategy", "risk_analysis", "ownership", "release_readiness"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй оценку рисков, тестовую стратегию, release readiness и проактивное влияние на качество продукта.",
+      "why_it_matters": "Ownership отделяет исполнителя чек-листов от зрелого инженера качества."
+    },
+    {
+      "id": "stakeholder_communication",
+      "title": "Коммуникация со стейкхолдерами",
+      "signals": ["communication", "stakeholders", "product", "developers", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль коммуникацию с разработкой, продуктом и аналитикой, чтобы качество было общей целью, а не отдельной функцией.",
+      "why_it_matters": "QA постоянно работает на стыке ролей, и слабая коммуникация быстро бьет по результату."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "test_design": 1,
+        "manual_testing": 1,
+        "sql_databases": 1,
+        "api_testing": 1,
+        "ci_cd_quality": 1,
+        "quality_ownership": 1,
+        "stakeholder_communication": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "test_design": 2,
+        "manual_testing": 2,
+        "sql_databases": 2,
+        "api_testing": 2,
+        "ui_automation": 2,
+        "automation_scripting": 2,
+        "ci_cd_quality": 1,
+        "debugging_observability": 1,
+        "quality_ownership": 2,
+        "stakeholder_communication": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "test_design": 3,
+        "manual_testing": 3,
+        "sql_databases": 3,
+        "api_testing": 3,
+        "ui_automation": 3,
+        "automation_scripting": 3,
+        "ci_cd_quality": 2,
+        "debugging_observability": 2,
+        "quality_ownership": 3,
+        "stakeholder_communication": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "Тестовый пакет для CRUD API с чек-листом, баг-репортами и базовыми Postman-проверками.",
+      "Небольшой pet-проект с ручным тестированием, SQL-проверками и минимальным набором автотестов."
+    ],
+    "middle": [
+      "Automation-проект с API и UI тестами, пайплайном запуска и отчетностью по качеству релизов.",
+      "Quality toolkit для продукта: risk-based regression, CI gate, SQL-checks и debug workflow."
+    ],
+    "senior": [
+      "Стратегия качества для многомодульного продукта с test pyramid, risk matrix и engineering quality process.",
+      "QA platform template с тестовыми библиотеками, пайплайнами, стабильной отчетностью и ownership-практиками."
+    ]
+  }
+}

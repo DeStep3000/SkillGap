@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "frontend_developer",
+    "title": "Frontend Developer",
+    "description": "Оценка frontend-разработчика с фокусом на React, TypeScript и delivery пользовательских интерфейсов."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести фичи и быть сильнее во frontend.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за архитектуру интерфейсов, качество и технические решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий frontend-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): React/Next.js, TypeScript, UI, state management, API, тесты, accessibility, performance, сборка, code review, какие фичи или интерфейсы вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "frontend_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень frontend-базы?",
+      "help_text": "Смотри на практику: JavaScript/TypeScript, React/Next.js, HTML/CSS и то, насколько уверенно ты собираешь пользовательские интерфейсы.",
+      "options": [
+        {
+          "id": "frontend_foundation_0",
+          "label": "Учебные интерфейсы и простые компоненты",
+          "score_map": {
+            "javascript_typescript": 0,
+            "react_nextjs": 0,
+            "html_css_ui": 0
+          }
+        },
+        {
+          "id": "frontend_foundation_1",
+          "label": "Рабочие UI по понятному ТЗ",
+          "score_map": {
+            "javascript_typescript": 1,
+            "react_nextjs": 1,
+            "html_css_ui": 1
+          }
+        },
+        {
+          "id": "frontend_foundation_2",
+          "label": "Сам(а) собираю сложные frontend-фичи",
+          "score_map": {
+            "javascript_typescript": 2,
+            "react_nextjs": 2,
+            "html_css_ui": 2
+          }
+        },
+        {
+          "id": "frontend_foundation_3",
+          "label": "Определяю стандарты и архитектуру интерфейсов",
+          "score_map": {
+            "javascript_typescript": 3,
+            "react_nextjs": 3,
+            "html_css_ui": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "product_delivery",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с delivery и качеством интерфейсов?",
+      "help_text": "Сюда входят state management, интеграция с API, тестирование, performance, accessibility, сборка и tooling.",
+      "options": [
+        {
+          "id": "product_delivery_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "state_management": 0,
+            "api_integration": 0,
+            "testing_quality": 0,
+            "performance_accessibility": 0,
+            "tooling_build": 0
+          }
+        },
+        {
+          "id": "product_delivery_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "state_management": 1,
+            "api_integration": 1,
+            "testing_quality": 1,
+            "performance_accessibility": 0,
+            "tooling_build": 1
+          }
+        },
+        {
+          "id": "product_delivery_2",
+          "label": "Сам(а) настраивал(а) под реальные задачи",
+          "score_map": {
+            "state_management": 2,
+            "api_integration": 2,
+            "testing_quality": 2,
+            "performance_accessibility": 2,
+            "tooling_build": 2
+          }
+        },
+        {
+          "id": "product_delivery_3",
+          "label": "Определял(а) quality и engineering practices frontend-команды",
+          "score_map": {
+            "state_management": 3,
+            "api_integration": 3,
+            "testing_quality": 3,
+            "performance_accessibility": 3,
+            "tooling_build": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в delivery и командной работе?",
+      "help_text": "Оцени, насколько ты ведешь фичи end-to-end, принимаешь решения по UX и архитектуре, работаешь с PR/review и влияешь на инженерный процесс команды.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "architecture_ownership": 0,
+            "collaboration_git": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые фичи end-to-end",
+          "score_map": {
+            "architecture_ownership": 1,
+            "collaboration_git": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду фичи, декомпозирую и даю review",
+          "score_map": {
+            "architecture_ownership": 2,
+            "collaboration_git": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Влияю на архитектуру и workflow команды",
+          "score_map": {
+            "architecture_ownership": 3,
+            "collaboration_git": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "javascript_typescript",
+      "title": "JavaScript/TypeScript",
+      "signals": ["javascript", "typescript", "js", "ts", "typing", "frontend"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль TypeScript, работу с типами, async flow и читаемую структуру frontend-кода на практике.",
+      "why_it_matters": "Без сильной JS/TS-базы трудно уверенно развивать сложные интерфейсы."
+    },
+    {
+      "id": "react_nextjs",
+      "title": "React/Next.js",
+      "signals": ["react", "nextjs", "next", "hooks", "components"],
+      "weight": 1.4,
+      "roadmap_action": "Собери production-like интерфейс на React или Next.js с понятной структурой, routing и data fetching.",
+      "why_it_matters": "Это основа большинства frontend-вакансий и главный носитель прикладного опыта."
+    },
+    {
+      "id": "html_css_ui",
+      "title": "HTML/CSS и UI",
+      "signals": ["html", "css", "scss", "tailwind", "layout", "ui"],
+      "weight": 1.2,
+      "roadmap_action": "Отработай адаптивную вёрстку, семантику, дизайн-системные компоненты и аккуратную работу с UI.",
+      "why_it_matters": "Сильный frontend начинается с качественного пользовательского интерфейса."
+    },
+    {
+      "id": "state_management",
+      "title": "State management",
+      "signals": ["redux", "zustand", "mobx", "context", "state_management"],
+      "weight": 1.1,
+      "roadmap_action": "Разберись с локальным и глобальным state, формами, кешированием клиентских данных и предсказуемыми update flow.",
+      "why_it_matters": "Сложные интерфейсы быстро упираются в управление состоянием."
+    },
+    {
+      "id": "api_integration",
+      "title": "Интеграция с API",
+      "signals": ["rest", "graphql", "api", "axios", "fetch"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль работу с API-контрактами, обработкой ошибок, auth, loading/error states и data fetching patterns.",
+      "why_it_matters": "Frontend ценен не сам по себе, а как качественный слой над данными и бизнес-логикой."
+    },
+    {
+      "id": "testing_quality",
+      "title": "Тестирование frontend",
+      "signals": ["jest", "vitest", "rtl", "playwright", "cypress", "tests"],
+      "weight": 1.1,
+      "roadmap_action": "Добавь unit, component и e2e тесты на ключевые сценарии и базовые quality checks.",
+      "why_it_matters": "Без тестов и quality practices рост в зрелую frontend-разработку ограничен."
+    },
+    {
+      "id": "performance_accessibility",
+      "title": "Performance и accessibility",
+      "signals": ["performance", "web_vitals", "a11y", "accessibility", "lighthouse"],
+      "weight": 1.0,
+      "roadmap_action": "Отработай accessibility, performance budget, lazy loading, оптимизацию рендеринга и метрик UX.",
+      "why_it_matters": "Качество интерфейса измеряется не только фичами, но и доступностью с производительностью."
+    },
+    {
+      "id": "tooling_build",
+      "title": "Tooling и build",
+      "signals": ["webpack", "vite", "eslint", "prettier", "bundler", "storybook"],
+      "weight": 1.0,
+      "roadmap_action": "Научись уверенно настраивать сборку, линтеры, форматирование, aliases и локальные frontend-инструменты.",
+      "why_it_matters": "Tooling влияет на скорость команды и стабильность delivery."
+    },
+    {
+      "id": "architecture_ownership",
+      "title": "Ownership и архитектура frontend",
+      "signals": ["architecture", "feature_ownership", "design_system", "ownership"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй декомпозицию интерфейсных фич, выбор структуры модулей и документирование решений.",
+      "why_it_matters": "Именно ownership отделяет исполнителя от самостоятельного Middle и Senior."
+    },
+    {
+      "id": "collaboration_git",
+      "title": "Git и командная разработка",
+      "signals": ["git", "pull_request", "code_review", "rebase", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль работу с ветками, review, rebase и инженерными договоренностями команды.",
+      "why_it_matters": "Сильный frontend-разработчик растет внутри командного процесса, а не в изоляции."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "javascript_typescript": 1,
+        "react_nextjs": 1,
+        "html_css_ui": 1,
+        "api_integration": 1,
+        "testing_quality": 1,
+        "architecture_ownership": 1,
+        "collaboration_git": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "javascript_typescript": 2,
+        "react_nextjs": 2,
+        "html_css_ui": 2,
+        "state_management": 2,
+        "api_integration": 2,
+        "testing_quality": 2,
+        "performance_accessibility": 1,
+        "tooling_build": 1,
+        "architecture_ownership": 2,
+        "collaboration_git": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "javascript_typescript": 3,
+        "react_nextjs": 3,
+        "html_css_ui": 3,
+        "state_management": 3,
+        "api_integration": 3,
+        "testing_quality": 3,
+        "performance_accessibility": 2,
+        "tooling_build": 2,
+        "architecture_ownership": 3,
+        "collaboration_git": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "Личный кабинет на React с формами, роутингом и интеграцией с REST API.",
+      "Мини-магазин с карточками, фильтрами, адаптивной вёрсткой и состоянием корзины."
+    ],
+    "middle": [
+      "Dashboard на React/Next.js с ролями, графиками, state management и тестами.",
+      "Frontend для SaaS-сервиса с auth, feature flags, accessibility и CI quality checks."
+    ],
+    "senior": [
+      "Дизайн-система и frontend-platform template с Storybook, quality gate и engineering standards.",
+      "Крупный multi-page продукт с performance budget, observability фронта и архитектурным разделением модулей."
+    ]
+  }
+}

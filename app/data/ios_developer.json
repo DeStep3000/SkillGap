@@ -1,0 +1,338 @@
+{
+  "role": {
+    "id": "ios_developer",
+    "title": "iOS Developer",
+    "description": "Оценка iOS-разработчика с фокусом на Swift, архитектуру мобильного приложения и release delivery."
+  },
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior"
+    },
+    {
+      "id": "middle",
+      "label": "Middle"
+    },
+    {
+      "id": "senior",
+      "label": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "target_level",
+      "kind": "meta",
+      "title": "К какому уровню ты хочешь прийти в ближайшей перспективе?",
+      "help_text": "Это поможет показать приоритетные gaps именно до твоей цели.",
+      "options": [
+        {
+          "id": "target_junior",
+          "label": "Junior",
+          "description": "Хочу уверенно закрыть базу и стартовать в профессии.",
+          "value": "junior"
+        },
+        {
+          "id": "target_middle",
+          "label": "Middle",
+          "description": "Хочу самостоятельно вести iOS-фичи и мобильные релизы.",
+          "value": "middle"
+        },
+        {
+          "id": "target_senior",
+          "label": "Senior",
+          "description": "Хочу отвечать за архитектуру приложения, качество и технические решения.",
+          "value": "senior"
+        }
+      ]
+    },
+    {
+      "id": "experience_summary",
+      "kind": "free_text",
+      "title": "Кратко опиши свой текущий iOS-опыт, стек и зоны ответственности",
+      "help_text": "Опиши 3-5 предложениями, с чем реально работал(а): Swift, UIKit/SwiftUI, networking, Core Data, тесты, App Store release, performance, accessibility, CI/CD, какие мобильные фичи или приложения вел(а) самостоятельно.",
+      "options": []
+    },
+    {
+      "id": "ios_foundation",
+      "kind": "competency",
+      "title": "Какой у тебя сейчас уровень iOS-базы?",
+      "help_text": "Смотри на практику: Swift, SwiftUI/UIKit, networking и persistence.",
+      "options": [
+        {
+          "id": "ios_foundation_0",
+          "label": "Учебные экраны и простые приложения",
+          "score_map": {
+            "swift_ios_core": 0,
+            "swiftui_uikit": 0,
+            "networking_persistence": 0
+          }
+        },
+        {
+          "id": "ios_foundation_1",
+          "label": "Рабочие фичи по понятному ТЗ",
+          "score_map": {
+            "swift_ios_core": 1,
+            "swiftui_uikit": 1,
+            "networking_persistence": 1
+          }
+        },
+        {
+          "id": "ios_foundation_2",
+          "label": "Сам(а) собираю сложные mobile-фичи",
+          "score_map": {
+            "swift_ios_core": 2,
+            "swiftui_uikit": 2,
+            "networking_persistence": 2
+          }
+        },
+        {
+          "id": "ios_foundation_3",
+          "label": "Определяю стандарты и архитектуру приложения",
+          "score_map": {
+            "swift_ios_core": 3,
+            "swiftui_uikit": 3,
+            "networking_persistence": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "mobile_delivery",
+      "kind": "competency",
+      "title": "Какой у тебя опыт с quality, release и эксплуатацией iOS-приложения?",
+      "help_text": "Сюда входят архитектурные паттерны, тестирование, release cycle, performance, accessibility и CI/CD.",
+      "options": [
+        {
+          "id": "mobile_delivery_0",
+          "label": "Почти не работал(а) с этим стеком",
+          "score_map": {
+            "architecture_patterns": 0,
+            "testing_quality": 0,
+            "app_lifecycle_release": 0,
+            "performance_accessibility": 0,
+            "ci_cd_distribution": 0
+          }
+        },
+        {
+          "id": "mobile_delivery_1",
+          "label": "Использовал(а) базово по готовым шаблонам",
+          "score_map": {
+            "architecture_patterns": 1,
+            "testing_quality": 1,
+            "app_lifecycle_release": 1,
+            "performance_accessibility": 1,
+            "ci_cd_distribution": 1
+          }
+        },
+        {
+          "id": "mobile_delivery_2",
+          "label": "Сам(а) настраивал(а) под реальные приложения",
+          "score_map": {
+            "architecture_patterns": 2,
+            "testing_quality": 2,
+            "app_lifecycle_release": 2,
+            "performance_accessibility": 2,
+            "ci_cd_distribution": 2
+          }
+        },
+        {
+          "id": "mobile_delivery_3",
+          "label": "Определял(а) engineering practices mobile-команды",
+          "score_map": {
+            "architecture_patterns": 3,
+            "testing_quality": 3,
+            "app_lifecycle_release": 3,
+            "performance_accessibility": 3,
+            "ci_cd_distribution": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "ownership_collaboration",
+      "kind": "competency",
+      "title": "Какая у тебя самостоятельность в продуктовой доставке и командной работе?",
+      "help_text": "Оцени, насколько ты ведешь mobile-фичи end-to-end, принимаешь решения, работаешь с PR/review и влияешь на инженерный процесс.",
+      "options": [
+        {
+          "id": "ownership_collaboration_0",
+          "label": "Небольшие задачи под сопровождением",
+          "score_map": {
+            "product_ownership": 0,
+            "collaboration_git": 0
+          }
+        },
+        {
+          "id": "ownership_collaboration_1",
+          "label": "Закрываю простые фичи end-to-end",
+          "score_map": {
+            "product_ownership": 1,
+            "collaboration_git": 1
+          }
+        },
+        {
+          "id": "ownership_collaboration_2",
+          "label": "Веду фичи, декомпозирую и даю review",
+          "score_map": {
+            "product_ownership": 2,
+            "collaboration_git": 2
+          }
+        },
+        {
+          "id": "ownership_collaboration_3",
+          "label": "Влияю на архитектуру продукта и workflow команды",
+          "score_map": {
+            "product_ownership": 3,
+            "collaboration_git": 3
+          }
+        }
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "id": "swift_ios_core",
+      "title": "Swift и iOS core",
+      "signals": ["swift", "ios", "concurrency", "protocols", "memory_management"],
+      "weight": 1.4,
+      "roadmap_action": "Усиль Swift, работу с памятью, concurrency, протоколами и качественную организацию iOS-кода.",
+      "why_it_matters": "Без сильной Swift-базы трудно уверенно расти в iOS-разработке."
+    },
+    {
+      "id": "swiftui_uikit",
+      "title": "SwiftUI/UIKit",
+      "signals": ["swiftui", "uikit", "views", "navigation", "layout"],
+      "weight": 1.4,
+      "roadmap_action": "Собери production-like интерфейс на SwiftUI или UIKit с понятной навигацией и компонентной структурой.",
+      "why_it_matters": "Это базовый слой большинства iOS-приложений."
+    },
+    {
+      "id": "networking_persistence",
+      "title": "Networking и persistence",
+      "signals": ["urlsession", "alamofire", "coredata", "realm", "networking", "storage"],
+      "weight": 1.2,
+      "roadmap_action": "Усиль работу с API, обработкой ошибок, offline state и локальным хранением данных.",
+      "why_it_matters": "Большинство мобильных приложений упирается в сеть и локальные данные."
+    },
+    {
+      "id": "architecture_patterns",
+      "title": "Архитектурные паттерны",
+      "signals": ["mvvm", "mvp", "clean_architecture", "coordinator", "architecture"],
+      "weight": 1.2,
+      "roadmap_action": "Отработай MVVM/Coordinator или другой осознанный архитектурный подход на реальном приложении.",
+      "why_it_matters": "Архитектура определяет скорость развития мобильного продукта."
+    },
+    {
+      "id": "testing_quality",
+      "title": "Тестирование iOS",
+      "signals": ["xctest", "snapshot_tests", "unit_tests", "ui_tests", "tests"],
+      "weight": 1.1,
+      "roadmap_action": "Добавь unit и UI tests, quality checks и инженерный подход к надежности мобильного кода.",
+      "why_it_matters": "Без тестов и quality practices мобильные релизы быстро становятся рискованными."
+    },
+    {
+      "id": "app_lifecycle_release",
+      "title": "Lifecycle и release",
+      "signals": ["app_store", "testflight", "release", "signing", "provisioning"],
+      "weight": 1.1,
+      "roadmap_action": "Разберись с жизненным циклом приложения, релизами, TestFlight, provisioning и поддержкой production-версий.",
+      "why_it_matters": "iOS delivery включает много platform-specific нюансов, которые влияют на скорость и качество релизов."
+    },
+    {
+      "id": "performance_accessibility",
+      "title": "Performance и accessibility",
+      "signals": ["performance", "instruments", "a11y", "accessibility", "voiceover"],
+      "weight": 1.0,
+      "roadmap_action": "Усиль профилирование, оптимизацию UI, работу с Instruments и accessibility для реальных сценариев.",
+      "why_it_matters": "Качество мобильного опыта сильно зависит от производительности и доступности."
+    },
+    {
+      "id": "ci_cd_distribution",
+      "title": "CI/CD и distribution",
+      "signals": ["fastlane", "ci_cd", "bitrise", "github_actions", "distribution"],
+      "weight": 1.0,
+      "roadmap_action": "Настрой сборки, тесты, distribution, release automation и mobile-specific CI/CD процесс.",
+      "why_it_matters": "Зрелая мобильная разработка не держится на ручных релизах."
+    },
+    {
+      "id": "product_ownership",
+      "title": "Ownership и продуктовая ответственность",
+      "signals": ["ownership", "product", "feature_ownership", "decision_making"],
+      "weight": 1.3,
+      "roadmap_action": "Практикуй ownership по mobile-фичам, влияние на UX-решения и сопровождение функциональности end-to-end.",
+      "why_it_matters": "Именно ownership обычно отделяет Middle/Senior от исполнителя экранов."
+    },
+    {
+      "id": "collaboration_git",
+      "title": "Git и командная разработка",
+      "signals": ["git", "pull_request", "code_review", "rebase", "teamwork"],
+      "weight": 0.9,
+      "roadmap_action": "Усиль review, ветки, инженерные договоренности и командную работу вокруг мобильного кода.",
+      "why_it_matters": "Сильный iOS-разработчик растет внутри процесса команды, а не в изоляции."
+    }
+  ],
+  "level_requirements": {
+    "junior": {
+      "min_total_score": 7,
+      "min_coverage_percent": 65,
+      "min_mandatory_ratio": 0.65,
+      "required_competencies": {
+        "swift_ios_core": 1,
+        "swiftui_uikit": 1,
+        "networking_persistence": 1,
+        "testing_quality": 1,
+        "app_lifecycle_release": 1,
+        "product_ownership": 1,
+        "collaboration_git": 1
+      }
+    },
+    "middle": {
+      "min_total_score": 15,
+      "min_coverage_percent": 70,
+      "min_mandatory_ratio": 0.7,
+      "required_competencies": {
+        "swift_ios_core": 2,
+        "swiftui_uikit": 2,
+        "networking_persistence": 2,
+        "architecture_patterns": 2,
+        "testing_quality": 2,
+        "app_lifecycle_release": 2,
+        "performance_accessibility": 1,
+        "ci_cd_distribution": 1,
+        "product_ownership": 2,
+        "collaboration_git": 2
+      }
+    },
+    "senior": {
+      "min_total_score": 23,
+      "min_coverage_percent": 75,
+      "min_mandatory_ratio": 0.75,
+      "required_competencies": {
+        "swift_ios_core": 3,
+        "swiftui_uikit": 3,
+        "networking_persistence": 3,
+        "architecture_patterns": 3,
+        "testing_quality": 3,
+        "app_lifecycle_release": 3,
+        "performance_accessibility": 2,
+        "ci_cd_distribution": 2,
+        "product_ownership": 3,
+        "collaboration_git": 3
+      }
+    }
+  },
+  "project_ideas": {
+    "junior": [
+      "iOS-приложение со списком задач, networking, локальным хранением и базовыми тестами.",
+      "Личный кабинет на SwiftUI с авторизацией, формами и адаптацией под разные состояния интерфейса."
+    ],
+    "middle": [
+      "Production-like iOS app с MVVM, unit/UI tests, CI и полноценным release flow через TestFlight.",
+      "Мобильный клиент для SaaS-продукта с offline state, observability, performance optimization и accessibility."
+    ],
+    "senior": [
+      "Мобильная платформа с reusable components, release automation, engineering standards и архитектурным шаблоном.",
+      "Крупное iOS-приложение с четким ownership по модулям, observability и зрелым mobile delivery process."
+    ]
+  }
+}
