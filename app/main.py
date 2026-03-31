@@ -11,6 +11,7 @@ from app.services.assessment import AssessmentEngine
 from app.services.catalog import RoleCatalog
 from app.services.llm_service import build_llm_service
 from app.services.vacancy_matching import VacancyMatchingService
+from app.services.vacancy_source import VacancySourceService
 
 
 API_DESCRIPTION = """
@@ -20,7 +21,7 @@ API_DESCRIPTION = """
 2. Загрузить анкету для выбранной роли.
 3. Отправить ответы пользователя и получить оценку уровня.
 4. Посмотреть историю прошлых оценок.
-5. Сравнить сохраненную оценку с текстом вакансии.
+5. Сравнить сохраненную оценку с текстом вакансии или ссылкой на страницу вакансии.
 
 Особенности:
 
@@ -48,7 +49,7 @@ OPENAPI_TAGS = [
     },
     {
         "name": "Вакансии",
-        "description": "Сравнение сохраненного профиля пользователя с текстом вакансии.",
+        "description": "Сравнение сохраненного профиля пользователя с текстом вакансии или URL вакансии.",
     },
 ]
 
@@ -61,6 +62,7 @@ async def lifespan(app: FastAPI):
     repository.initialize()
     llm_service = build_llm_service(settings)
     vacancy_matching_service = VacancyMatchingService(catalog)
+    vacancy_source_service = VacancySourceService()
 
     app.state.settings = settings
     app.state.catalog = catalog
@@ -68,6 +70,7 @@ async def lifespan(app: FastAPI):
     app.state.engine = AssessmentEngine(catalog)
     app.state.llm_service = llm_service
     app.state.vacancy_matching_service = vacancy_matching_service
+    app.state.vacancy_source_service = vacancy_source_service
     yield
 
 

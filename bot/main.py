@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import logging
 from typing import Any
+from urllib.parse import urlparse
 
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.client.default import DefaultBotProperties
@@ -27,6 +28,8 @@ def get_api_client() -> AssessmentApiClient:
     return AssessmentApiClient(
         base_url=settings.api_base_url,
         timeout_seconds=settings.timeout_seconds,
+        assessment_timeout_seconds=settings.assessment_timeout_seconds,
+        vacancy_timeout_seconds=settings.vacancy_timeout_seconds,
     )
 
 
@@ -138,11 +141,12 @@ async def prompt_for_vacancy(
     assessment_id: int | None,
     edit: bool,
 ) -> None:
-    await state.set_state(AssessmentFlow.awaiting_vacancy_text)
+    await state.set_state(AssessmentFlow.awaiting_vacancy_url)
     await state.update_data(vacancy_assessment_id=assessment_id)
     text = (
-        "Отправь текст вакансии следующим сообщением."
-        "Я оценю твое соответствие, покажу сильные стороны, недостающие навыки и что стоит прокачать в первую очередь."
+        "Отправь ссылку на вакансию следующим сообщением.\n\n"
+        "Я загружу страницу, вытащу описание вакансии и потом сравню его с твоим профилем: "
+        "покажу совпадения, пробелы и что стоит прокачать в первую очередь."
     )
     if edit:
         await safe_edit(message, text)
@@ -358,21 +362,26 @@ async def free_text_answer_handler(message: Message, state: FSMContext) -> None:
     await present_current_question(message, state, edit=False)
 
 
-@router.message(AssessmentFlow.awaiting_vacancy_text)
-async def vacancy_text_handler(message: Message, state: FSMContext) -> None:
-    vacancy_text = (message.text or "").strip()
-    if not vacancy_text:
-        await message.answer("Нужен текст вакансии. Вставь описание следующим сообщением.")
+@router.message(AssessmentFlow.awaiting_vacancy_url)
+async def vacancy_url_handler(message: Message, state: FSMContext) -> None:
+    vacancy_url = (message.text or "").strip()
+    parsed_url = urlparse(vacancy_url)
+    if parsed_url.scheme.lower() not in {"http", "https"} or not parsed_url.netloc:
+        await message.answer(
+            "Нужна полная ссылка на вакансию, начиная с http:// или https://."
+        )
         return
 
     data = await state.get_data()
     assessment_id = data.get("vacancy_assessment_id")
     payload = {
         "assessment_id": assessment_id,
-        "vacancy_text": vacancy_text,
+        "vacancy_url": vacancy_url,
     }
 
-    await message.answer("Анализирую вакансию и считаю совпадение с твоим профилем...")
+    await message.answer(
+        "Загружаю вакансию по ссылке, извлекаю описание и считаю совпадение с твоим профилем..."
+    )
     api = get_api_client()
     try:
         result = await api.create_vacancy_analysis(message.from_user.id, payload)
