@@ -26,11 +26,11 @@ def question_keyboard(question: dict) -> InlineKeyboardMarkup:
 def result_keyboard(assessment_id: int) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(
-        text="Сравнить вакансию",
+        text="Подхожу ли я вакансии",
         callback_data=f"menu:vacancy:{assessment_id}",
     )
-    builder.button(text="История", callback_data="menu:history")
-    builder.button(text="Пройти заново", callback_data="menu:restart")
+    builder.button(text="Мой прогресс", callback_data="menu:history")
+    builder.button(text="Пройти анализ заново", callback_data="menu:restart")
     builder.adjust(1, 2)
     return builder.as_markup()
 
@@ -42,7 +42,7 @@ def history_keyboard(items: list[dict]) -> InlineKeyboardMarkup:
             text=f"{_short_date(item['created_at'])} • {item['current_level_label']}",
             callback_data=f"history:{item['assessment_id']}",
         )
-    builder.button(text="Пройти заново", callback_data="menu:restart")
+    builder.button(text="Пройти анализ заново", callback_data="menu:restart")
     builder.adjust(1)
     return builder.as_markup()
 

@@ -33,10 +33,10 @@ def get_api_client() -> AssessmentApiClient:
 async def register_bot_commands(bot: Bot) -> None:
     await bot.set_my_commands(
         [
-            BotCommand(command="start", description="Начать заново"),
-            BotCommand(command="menu", description="Открыть главное меню"),
-            BotCommand(command="history", description="Показать историю"),
-            BotCommand(command="vacancy", description="Сравнить себя с вакансией"),
+            BotCommand(command="start", description="Узнать свой уровень"),
+            BotCommand(command="menu", description="Главное меню"),
+            BotCommand(command="history", description="Мой прогресс"),
+            BotCommand(command="vacancy", description="Подхожу ли я вакансии"),
         ]
     )
 
@@ -48,7 +48,7 @@ async def render_role_menu(message: Message, state: FSMContext, *, edit: bool = 
     await state.set_state(AssessmentFlow.choosing_role)
     await state.update_data(roles=roles)
 
-    text = "Привет! Выбери роль, для которой хочешь пройти оценку."
+    text = "Привет! Я помогу определить твой уровень и покажу, что нужно прокачать. Выбери роль:"
     if edit:
         await safe_edit(message, text, roles_keyboard(roles))
         return
@@ -114,9 +114,9 @@ async def finalize_assessment(
     }
 
     if edit_loading:
-        await safe_edit(message, "Считаю результат, запускаю extraction и собираю рекомендации...")
+        await safe_edit(message, "Анализирую твой профиль и готовлю рекомендации по развитию...")
     else:
-        await message.answer("Считаю результат, запускаю extraction и собираю рекомендации...")
+        await message.answer("Анализирую твой профиль и готовлю рекомендации по развитию...")
 
     api = get_api_client()
     result = await api.create_assessment(payload)
@@ -141,8 +141,8 @@ async def prompt_for_vacancy(
     await state.set_state(AssessmentFlow.awaiting_vacancy_text)
     await state.update_data(vacancy_assessment_id=assessment_id)
     text = (
-        "Отправь текст вакансии следующим сообщением. "
-        "Я сравню его с твоим последним анализом и покажу match, gaps и приоритеты."
+        "Отправь текст вакансии следующим сообщением."
+        "Я оценю твое соответствие, покажу сильные стороны, недостающие навыки и что стоит прокачать в первую очередь."
     )
     if edit:
         await safe_edit(message, text)
@@ -176,7 +176,7 @@ async def history_handler(message: Message) -> None:
         return
 
     if not items:
-        await message.answer("История пока пустая. Сначала пройди хотя бы одну оценку.")
+        await message.answer("История пока пустая. Для начала узнай свой уровень.")
         return
 
     await message.answer(format_history(items), reply_markup=history_keyboard(items))
@@ -192,7 +192,7 @@ async def vacancy_handler(message: Message, state: FSMContext) -> None:
         return
 
     if not latest:
-        await message.answer("Сначала пройди хотя бы одну оценку, потом можно сравнить себя с вакансией.")
+        await message.answer("Сначала пройди оценку уровня - тогда я смогу точно сравнить тебя с вакансией и показать пробелы.")
         return
 
     await prompt_for_vacancy(
