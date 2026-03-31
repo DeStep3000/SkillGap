@@ -141,8 +141,7 @@ async def prompt_for_vacancy(
     await state.set_state(AssessmentFlow.awaiting_vacancy_text)
     await state.update_data(vacancy_assessment_id=assessment_id)
     text = (
-        "Отправь текст вакансии следующим сообщением."
-        "Я оценю твое соответствие, покажу сильные стороны, недостающие навыки и что стоит прокачать в первую очередь."
+        "Отправь текст вакансии следующим сообщением. \nЯ оценю твое соответствие, покажу сильные стороны, недостающие навыки и что стоит прокачать в первую очередь."
     )
     if edit:
         await safe_edit(message, text)
