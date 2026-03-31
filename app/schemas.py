@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class RoleSummary(BaseModel):
@@ -320,7 +320,9 @@ class AssessmentResponse(BaseModel):
         description="Компетенции, которые важнее всего усилить до выбранной цели."
     )
     roadmap: list[RoadmapItem] = Field(description="Приоритетный roadmap развития на основе gaps.")
-    project_ideas: list[str] = Field(description="Мини-проекты, которые помогут расти в выбранной роли.")
+    project_ideas: list[str] = Field(
+        description="Идеи portfolio-проектов, которые помогут расти в выбранной роли. При включенном LLM могут генерироваться динамически."
+    )
     reasoning: list[str] = Field(description="Краткие объяснения, почему система поставила такой результат.")
     summary: str = Field(description="Короткое текстовое резюме по итогам оценки.")
     narrative_explanation: str | None = Field(
@@ -394,7 +396,7 @@ class VacancyMatchRequest(BaseModel):
         json_schema_extra={
             "example": {
                 "assessment_id": 42,
-                "vacancy_text": "Ищем Python Backend Developer с опытом FastAPI, PostgreSQL, Docker, CI/CD и тестирования.",
+                "vacancy_url": "https://example.com/jobs/python-backend-developer",
             }
         }
     )
@@ -404,10 +406,32 @@ class VacancyMatchRequest(BaseModel):
         description="Идентификатор оценки, с которой нужно сравнить вакансию. Если не передан, будет взята последняя оценка пользователя.",
         examples=[42],
     )
-    vacancy_text: str = Field(
-        description="Полный текст вакансии в свободной форме.",
+    vacancy_text: str | None = Field(
+        default=None,
+        description="Полный текст вакансии в свободной форме. Можно передать вместо `vacancy_url` для обратной совместимости.",
         examples=["Ищем Python Backend Developer с опытом FastAPI, PostgreSQL, Docker, CI/CD и тестирования."],
     )
+    vacancy_url: str | None = Field(
+        default=None,
+        description="Ссылка на страницу вакансии. Backend загрузит страницу, извлечет текст и только потом выполнит vacancy matching.",
+        examples=["https://example.com/jobs/python-backend-developer"],
+    )
+
+    @field_validator("vacancy_text", "vacancy_url", mode="before")
+    @classmethod
+    def _normalize_optional_text(cls, value: object) -> str | None:
+        if value is None:
+            return None
+        text = str(value).strip()
+        return text or None
+
+    @model_validator(mode="after")
+    def _validate_source(self) -> "VacancyMatchRequest":
+        has_text = bool(self.vacancy_text)
+        has_url = bool(self.vacancy_url)
+        if has_text == has_url:
+            raise ValueError("Provide exactly one of vacancy_text or vacancy_url")
+        return self
 
 
 class VacancyRequirementItem(BaseModel):
@@ -435,6 +459,8 @@ class VacancyMatchResponse(BaseModel):
                 "target_level_label": "Senior",
                 "match_percent": 67,
                 "vacancy_summary": "Вакансия для backend-разработчика с акцентом на API, БД и production delivery.",
+                "vacancy_source_url": "https://example.com/jobs/python-backend-developer",
+                "vacancy_source_title": "Python Backend Developer",
                 "reasoning": [
                     "Match с вакансией: 67%.",
                     "Совпадений: 4, частичных совпадений: 2, пробелов: 1."
@@ -475,6 +501,16 @@ class VacancyMatchResponse(BaseModel):
     vacancy_summary: str | None = Field(
         default=None,
         description="Короткое резюме вакансии после extraction.",
+    )
+    vacancy_source_url: str | None = Field(
+        default=None,
+        description="Ссылка на исходную страницу вакансии, если анализ запускался по URL.",
+        examples=["https://example.com/jobs/python-backend-developer"],
+    )
+    vacancy_source_title: str | None = Field(
+        default=None,
+        description="Заголовок страницы вакансии, который удалось извлечь перед анализом.",
+        examples=["Python Backend Developer"],
     )
     reasoning: list[str] = Field(description="Краткие объяснения, почему match получился именно таким.")
     matched_skills: list[str] = Field(description="Навыки, которые уже хорошо совпадают с вакансией.")

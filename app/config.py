@@ -23,6 +23,7 @@ class Settings:
     openrouter_site_url: str | None
     openrouter_extraction_model: str | None
     openrouter_explanation_model: str | None
+    openrouter_projects_model: str | None
     openrouter_vacancy_model: str | None
     api_title: str = "SkillGap API"
     api_version: str = "0.1.0"
@@ -52,6 +53,8 @@ def get_settings() -> Settings:
         openrouter_explanation_model=os.getenv(
             "OPENROUTER_EXPLANATION_MODEL", ""
         ).strip()
+        or None,
+        openrouter_projects_model=os.getenv("OPENROUTER_PROJECTS_MODEL", "").strip()
         or None,
         openrouter_vacancy_model=os.getenv("OPENROUTER_VACANCY_MODEL", "").strip()
         or None,

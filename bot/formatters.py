@@ -17,6 +17,14 @@ def format_question(role_title: str, question: dict, index: int, total: int) -> 
 
     if question.get("kind") == "free_text":
         lines.extend(["", "<i>Ответь следующим сообщением в свободной форме.</i>"])
+    else:
+        lines.extend(["", "<b>Варианты ответа:</b>"])
+        for option_index, option in enumerate(question.get("options", []), start=1):
+            lines.append(f"{option_index}. {escape(option['label'])}")
+            description = option.get("description")
+            if description:
+                lines.append(f"<i>{escape(description)}</i>")
+        lines.extend(["", "<i>Выбери номер кнопкой ниже.</i>"])
 
     return "\n".join(lines)
 
@@ -102,6 +110,14 @@ def format_vacancy_result(result: dict) -> str:
         f"<b>Текущий уровень:</b> {escape(result['current_level_label'])}",
         f"<b>Match:</b> {result['match_percent']}%",
     ]
+
+    vacancy_source_url = result.get("vacancy_source_url")
+    vacancy_source_title = result.get("vacancy_source_title")
+    if vacancy_source_url:
+        link_label = escape(vacancy_source_title or "Открыть вакансию")
+        lines.append(f'<b>Источник:</b> <a href="{escape(vacancy_source_url)}">{link_label}</a>')
+    elif vacancy_source_title:
+        lines.append(f"<b>Источник:</b> {escape(vacancy_source_title)}")
 
     created_at = result.get("created_at")
     if created_at:

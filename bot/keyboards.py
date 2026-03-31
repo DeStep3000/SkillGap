@@ -14,12 +14,12 @@ def roles_keyboard(roles: list[dict]) -> InlineKeyboardMarkup:
 
 def question_keyboard(question: dict) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    for option in question["options"]:
+    for index, option in enumerate(question["options"], start=1):
         builder.button(
-            text=option["label"],
+            text=f"{index}",
             callback_data=f"answer:{question['id']}:{option['id']}",
         )
-    builder.adjust(1)
+    builder.adjust(min(4, max(1, len(question["options"]))))
     return builder.as_markup()
 
 
