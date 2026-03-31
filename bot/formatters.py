@@ -32,6 +32,12 @@ def format_question(role_title: str, question: dict, index: int, total: int) -> 
 from html import escape
 
 
+from html import escape
+
+
+from html import escape
+
+
 def format_result(result: dict) -> str:
     lines = []
 
@@ -42,82 +48,47 @@ def format_result(result: dict) -> str:
     lines.append(f"<b>{role_title}</b>")
     lines.append("")
     lines.append(f"<b>Твой текущий уровень:</b> {current_level}")
-
-    if result.get("current_level") != result.get("target_level"):
-        lines.append(f"<b>Цель:</b> {target_level}")
+    lines.append(f"<b>Целевой уровень:</b> {target_level}")
 
     created_at = result.get("created_at")
     if created_at:
         lines.append(f"<b>Дата анализа:</b> {escape(created_at.replace('T', ' ')[:19])}")
 
-    if result.get("summary"):
-        lines.extend(["", f"<b>Коротко:</b> {escape(result['summary'])}"])
+    main_explanation = result.get("summary") or result.get("narrative_explanation")
+    if main_explanation:
+        lines.extend(["", "<b>Как я вижу твой профиль:</b>"])
+        lines.append(escape(main_explanation))
 
-    if result.get("strengths"):
+    coverage = result.get("coverage_by_level") or []
+    if coverage:
+        lines.extend(["", "<b>Детали оценки:</b>"])
+        coverage_parts = [
+            f"{escape(item['label'])} — {item['percent']}%"
+            for item in coverage
+        ]
+        lines.append("• Покрытие матрицы: " + "; ".join(coverage_parts))
+
+    strengths = result.get("strengths") or []
+    if strengths:
         lines.extend(["", "<b>Сильные стороны:</b>"])
-        for item in result["strengths"][:4]:
+        for item in strengths[:4]:
             lines.append(f"• {escape(item)}")
 
-    gaps = result.get("gaps_to_target_level") or result.get("gaps_to_next_level") or []
-    if gaps:
-        if result.get("gaps_to_target_level") and result.get("current_level") == result.get("target_level"):
-            label = "Что стоит укрепить"
-        elif result.get("gaps_to_target_level"):
-            label = "Что мешает перейти к цели"
-        else:
-            label = "Что мешает перейти на следующий уровень"
-
-        lines.extend(["", f"<b>{label}:</b>"])
-        for gap in gaps[:5]:
-            lines.append(f"• {escape(gap['title'])}")
-
-    if result.get("roadmap"):
-        lines.extend(["", "<b>Что делать дальше:</b>"])
-        for item in result["roadmap"][:4]:
+    roadmap = result.get("roadmap") or []
+    if roadmap:
+        lines.extend(["", "<b>Что делать, чтобы достичь целевого грейда:</b>"])
+        for item in roadmap[:4]:
             lines.append(
                 f"{item['step']}. <b>{escape(item['focus'])}</b> — {escape(item['action'])}"
             )
 
-    if result.get("project_ideas"):
+    project_ideas = result.get("project_ideas") or []
+    if project_ideas:
         lines.extend(["", "<b>Практика:</b>"])
-        for idea in result["project_ideas"][:2]:
+        for idea in project_ideas[:2]:
             lines.append(f"• {escape(idea)}")
 
-    if result.get("narrative_explanation"):
-        lines.extend(["", "<b>Краткий разбор:</b>"])
-        lines.append(escape(result["narrative_explanation"]))
-
-    lines.extend(["", "<b>Детали оценки:</b>"])
-    lines.append(f"• Баллы: {result['total_score']}/{result['max_score']}")
-
-    coverage = result.get("coverage_by_level") or []
-    if coverage:
-        coverage_parts = [f"{escape(item['label'])} — {item['percent']}%" for item in coverage]
-        lines.append("• Покрытие матрицы: " + "; ".join(coverage_parts))
-
-    if result.get("reasoning"):
-        lines.extend(["", "<b>Почему я так оценил твой уровень:</b>"])
-        for reason in result["reasoning"][:5]:
-            lines.append(f"• {escape(reason)}")
-
-    structured_profile = result.get("structured_profile") or {}
-    normalized_skills = structured_profile.get("normalized_skills") or []
-    extraction_summary = structured_profile.get("summary")
-
-    if normalized_skills or extraction_summary:
-        lines.extend(["", "<b>Что я понял из твоих ответов:</b>"])
-        if normalized_skills:
-            lines.append("• " + escape(", ".join(str(item) for item in normalized_skills[:8])))
-        if extraction_summary:
-            lines.append(escape(str(extraction_summary)))
-
-    if result.get("score_adjustments"):
-        lines.extend(["", "<b>Что дополнительно повлияло на результат:</b>"])
-        for item in result["score_adjustments"][:4]:
-            lines.append(f"• {escape(item)}")
-
     return "\n".join(lines)
-
 def format_history(items: list[dict]) -> str:
     lines = ["<b>История оценок</b>", ""]
     for item in items:
