@@ -20,6 +20,7 @@ from app.services.assessment import AssessmentEngine, AssessmentError
 from app.services.catalog import CatalogError, RoleCatalog
 from app.services.llm_service import BaseLLMService
 from app.services.vacancy_matching import VacancyMatchingService
+from app.services.vacancy_source import VacancySourceError, VacancySourceService
 
 
 router = APIRouter(prefix="/api/v1")
@@ -83,6 +84,10 @@ def get_llm_service(request: Request) -> BaseLLMService:
 
 def get_vacancy_matching_service(request: Request) -> VacancyMatchingService:
     return request.app.state.vacancy_matching_service
+
+
+def get_vacancy_source_service(request: Request) -> VacancySourceService:
+    return request.app.state.vacancy_source_service
 
 
 @router.get(
@@ -267,14 +272,18 @@ def get_assessment_detail(
     tags=["Вакансии"],
     summary="Сравнить профиль пользователя с вакансией",
     description=(
-        "Принимает текст вакансии, извлекает требования и сравнивает их с сохраненной оценкой "
-        "пользователя. Если `assessment_id` не передан, используется последняя доступная оценка."
+        "Принимает текст вакансии или ссылку на страницу вакансии, извлекает требования и "
+        "сравнивает их с сохраненной оценкой пользователя. Если `assessment_id` не передан, "
+        "используется последняя доступная оценка."
     ),
     response_description="Результат vacancy match с приоритетными gaps и найденными совпадениями.",
     responses={
         400: {
             "model": ApiErrorResponse,
-            "description": "Пустой текст вакансии или не удалось извлечь требования из вакансии.",
+            "description": (
+                "Пустой текст вакансии, некорректная ссылка или не удалось извлечь "
+                "требования из вакансии."
+            ),
         },
         404: {
             "model": ApiErrorResponse,
@@ -289,6 +298,7 @@ def create_vacancy_analysis(
     repository: AssessmentRepository = Depends(get_repository),
     llm_service: BaseLLMService = Depends(get_llm_service),
     vacancy_matching_service: VacancyMatchingService = Depends(get_vacancy_matching_service),
+    vacancy_source_service: VacancySourceService = Depends(get_vacancy_source_service),
 ) -> dict:
     assessment_record = (
         repository.get_assessment(telegram_id, payload.assessment_id)
@@ -301,12 +311,23 @@ def create_vacancy_analysis(
             detail="Assessment not found for vacancy comparison",
         )
 
-    vacancy_text = payload.vacancy_text.strip()
-    if not vacancy_text:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Vacancy text cannot be empty",
-        )
+    vacancy_source = None
+    if payload.vacancy_url:
+        try:
+            vacancy_source = vacancy_source_service.extract_from_url(payload.vacancy_url)
+        except VacancySourceError as error:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=str(error),
+            ) from error
+        vacancy_text = vacancy_source.vacancy_text
+    else:
+        vacancy_text = (payload.vacancy_text or "").strip()
+        if not vacancy_text:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Vacancy text cannot be empty",
+            )
 
     assessment_result = json.loads(assessment_record["result_json"])
     try:
@@ -325,6 +346,8 @@ def create_vacancy_analysis(
         assessment_result=assessment_result,
         vacancy_profile=vacancy_profile,
     )
+    result["vacancy_source_url"] = vacancy_source.source_url if vacancy_source else None
+    result["vacancy_source_title"] = vacancy_source.source_title if vacancy_source else None
     vacancy_analysis_id, created_at = repository.save_vacancy_analysis(
         assessment_id=int(assessment_record["id"]),
         vacancy_text=vacancy_text,

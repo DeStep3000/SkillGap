@@ -132,6 +132,14 @@ def format_vacancy_result(result: dict) -> str:
         f"<b>Match:</b> {result['match_percent']}%",
     ]
 
+    vacancy_source_url = result.get("vacancy_source_url")
+    vacancy_source_title = result.get("vacancy_source_title")
+    if vacancy_source_url:
+        link_label = escape(vacancy_source_title or "Открыть вакансию")
+        lines.append(f'<b>Источник:</b> <a href="{escape(vacancy_source_url)}">{link_label}</a>')
+    elif vacancy_source_title:
+        lines.append(f"<b>Источник:</b> {escape(vacancy_source_title)}")
+
     created_at = result.get("created_at")
     if created_at:
         lines.append(f"<b>Дата анализа:</b> {escape(created_at.replace('T', ' ')[:19])}")

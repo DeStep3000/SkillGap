@@ -170,8 +170,11 @@ class OpenRouterLLMService(BaseLLMService):
         role: dict[str, Any],
         vacancy_text: str,
     ) -> dict[str, Any] | None:
-        model = self.model_config.vacancy or self.model_config.extraction
-        if not model:
+        candidate_models = self._candidate_models(
+            self.model_config.vacancy,
+            self.model_config.extraction,
+        )
+        if not candidate_models:
             return None
 
         competency_map = {
@@ -202,26 +205,33 @@ class OpenRouterLLMService(BaseLLMService):
             f"{vacancy_text}"
         )
 
-        try:
-            raw_content = self._chat(
-                model=model,
-                system_prompt=system_prompt,
-                user_prompt=user_prompt,
-                temperature=0.1,
-            )
-        except Exception as error:  # noqa: BLE001
-            logger.warning("OpenRouter vacancy extraction failed: %s", error)
-            return None
+        for index, model in enumerate(candidate_models):
+            try:
+                raw_content = self._chat(
+                    model=model,
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
+                    temperature=0.1,
+                )
+                parsed = self._parse_vacancy_json(raw_content, competency_map)
+            except Exception as error:  # noqa: BLE001
+                logger.warning(
+                    "OpenRouter vacancy extraction failed for model %s: %s",
+                    model,
+                    error,
+                )
+                continue
 
-        try:
-            parsed = self._parse_vacancy_json(raw_content, competency_map)
-        except Exception as error:  # noqa: BLE001
-            logger.warning("OpenRouter vacancy parse failed: %s", error)
-            return None
+            if index > 0:
+                logger.info(
+                    "OpenRouter vacancy extraction fell back to model %s after previous model failure",
+                    model,
+                )
+            parsed["llm_provider"] = "openrouter"
+            parsed["llm_model"] = model
+            return parsed
 
-        parsed["llm_provider"] = "openrouter"
-        parsed["llm_model"] = model
-        return parsed
+        return None
 
     def _chat(
         self,
@@ -248,13 +258,18 @@ class OpenRouterLLMService(BaseLLMService):
             ],
         }
 
-        with httpx.Client(timeout=self.timeout_seconds) as client:
-            response = client.post(
-                f"{self.base_url}/chat/completions",
-                headers=headers,
-                json=payload,
-            )
-            response.raise_for_status()
+        try:
+            with httpx.Client(timeout=self.timeout_seconds) as client:
+                response = client.post(
+                    f"{self.base_url}/chat/completions",
+                    headers=headers,
+                    json=payload,
+                )
+                response.raise_for_status()
+        except httpx.HTTPStatusError as error:
+            raise RuntimeError(self._format_http_error(error, model)) from error
+        except httpx.HTTPError as error:
+            raise RuntimeError(f"OpenRouter request failed for model {model}: {error}") from error
 
         data = response.json()
         try:
@@ -270,6 +285,63 @@ class OpenRouterLLMService(BaseLLMService):
             raise RuntimeError("OpenRouter returned empty content")
 
         return content.strip()
+
+    @staticmethod
+    def _candidate_models(*models: str | None) -> list[str]:
+        result: list[str] = []
+        seen: set[str] = set()
+        for model in models:
+            if not model:
+                continue
+            normalized = model.strip()
+            if not normalized or normalized in seen:
+                continue
+            seen.add(normalized)
+            result.append(normalized)
+        return result
+
+    @staticmethod
+    def _format_http_error(error: httpx.HTTPStatusError, model: str) -> str:
+        response = error.response
+        detail = OpenRouterLLMService._extract_error_detail(response)
+        if detail:
+            return (
+                f"OpenRouter request failed for model {model} with "
+                f"HTTP {response.status_code}: {detail}"
+            )
+        return (
+            f"OpenRouter request failed for model {model} with "
+            f"HTTP {response.status_code}"
+        )
+
+    @staticmethod
+    def _extract_error_detail(response: httpx.Response) -> str | None:
+        try:
+            payload = response.json()
+        except ValueError:
+            payload = None
+
+        if isinstance(payload, dict):
+            error_payload = payload.get("error")
+            if isinstance(error_payload, dict):
+                message = error_payload.get("message")
+                if isinstance(message, str) and message.strip():
+                    return message.strip()
+            if isinstance(error_payload, str) and error_payload.strip():
+                return error_payload.strip()
+
+            for key in ("message", "detail"):
+                value = payload.get(key)
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+
+        text_body = response.text.strip()
+        if not text_body:
+            return None
+        compact_body = " ".join(text_body.split())
+        if response.status_code == 404 and "<html" in compact_body.lower():
+            return "received an HTML 404 page from OpenRouter"
+        return compact_body[:300]
 
     @staticmethod
     def _collect_free_text_answers(
