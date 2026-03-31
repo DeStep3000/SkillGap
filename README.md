@@ -123,7 +123,8 @@ uv run python -m bot.main
 Пример разделения:
 
 - `OPENROUTER_EXTRACTION_MODEL` — модель для извлечения структуры из свободного текста
-- `OPENROUTER_EXPLANATION_MODEL` — модель для human-readable explanation и roadmap
+- `OPENROUTER_EXPLANATION_MODEL` — модель для human-readable explanation
+- `OPENROUTER_PROJECTS_MODEL` — модель для генерации portfolio-проектов; если не задана, используется explanation-model
 - `OPENROUTER_VACANCY_MODEL` — модель для анализа вакансии
 
 То есть внутри проекта можно вызывать один и тот же API OpenRouter, но в поле `model` передавать разные значения для разных шагов пайплайна.
@@ -132,9 +133,10 @@ uv run python -m bot.main
 
 - free-text extraction для текстовых ответов анкеты
 - explanation для итогового human-readable результата
+- AI-генерация portfolio-проектов под сильные стороны и gaps пользователя
 - vacancy extraction и vacancy matching по тексту вакансии
 
-То есть один и тот же OpenRouter key у тебя уже покрывает три сценария: extraction профиля, explanation результата и extraction требований вакансии.
+То есть один и тот же OpenRouter key у тебя уже покрывает четыре сценария: extraction профиля, explanation результата, генерацию portfolio-проектов и extraction требований вакансии.
 
 ## Где менять матрицу
 

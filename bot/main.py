@@ -28,6 +28,8 @@ def get_api_client() -> AssessmentApiClient:
     return AssessmentApiClient(
         base_url=settings.api_base_url,
         timeout_seconds=settings.timeout_seconds,
+        assessment_timeout_seconds=settings.assessment_timeout_seconds,
+        vacancy_timeout_seconds=settings.vacancy_timeout_seconds,
     )
 
 

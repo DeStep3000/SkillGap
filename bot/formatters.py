@@ -17,6 +17,14 @@ def format_question(role_title: str, question: dict, index: int, total: int) -> 
 
     if question.get("kind") == "free_text":
         lines.extend(["", "<i>Ответь следующим сообщением в свободной форме.</i>"])
+    else:
+        lines.extend(["", "<b>Варианты ответа:</b>"])
+        for option_index, option in enumerate(question.get("options", []), start=1):
+            lines.append(f"{option_index}. {escape(option['label'])}")
+            description = option.get("description")
+            if description:
+                lines.append(f"<i>{escape(description)}</i>")
+        lines.extend(["", "<i>Выбери номер кнопкой ниже.</i>"])
 
     return "\n".join(lines)
 

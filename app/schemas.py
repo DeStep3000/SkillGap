@@ -320,7 +320,9 @@ class AssessmentResponse(BaseModel):
         description="Компетенции, которые важнее всего усилить до выбранной цели."
     )
     roadmap: list[RoadmapItem] = Field(description="Приоритетный roadmap развития на основе gaps.")
-    project_ideas: list[str] = Field(description="Мини-проекты, которые помогут расти в выбранной роли.")
+    project_ideas: list[str] = Field(
+        description="Идеи portfolio-проектов, которые помогут расти в выбранной роли. При включенном LLM могут генерироваться динамически."
+    )
     reasoning: list[str] = Field(description="Краткие объяснения, почему система поставила такой результат.")
     summary: str = Field(description="Короткое текстовое резюме по итогам оценки.")
     narrative_explanation: str | None = Field(
