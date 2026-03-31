@@ -63,6 +63,7 @@ class AssessmentEngine:
             coverage_map=coverage_map,
             current_level=current_level,
             target_level=target_level,
+            next_level=next_level,
             strengths=strengths,
             target_gaps=gaps_to_target_level,
             next_gaps=gaps_to_next_level,
@@ -428,6 +429,7 @@ class AssessmentEngine:
         coverage_map: dict[str, int],
         current_level: str,
         target_level: str,
+        next_level: str | None,
         strengths: list[str],
         target_gaps: list[dict[str, Any]],
         next_gaps: list[dict[str, Any]],
@@ -462,20 +464,31 @@ class AssessmentEngine:
         dominant_gaps = target_gaps or next_gaps
         if dominant_gaps:
             gap_titles = ", ".join(item["title"] for item in dominant_gaps[:3])
-            if target_gaps and self._level_rank(role, current_level) >= self._level_rank(
-                role, target_level
-            ):
+            current_rank = self._level_rank(role, current_level)
+            target_rank = self._level_rank(role, target_level)
+
+            if target_gaps and current_rank >= target_rank:
                 reasoning.append(
                     f"Чтобы увереннее держать уровень {target_label}, усили: {gap_titles}."
+                )
+            elif current_rank > target_rank and next_gaps and next_level:
+                next_label = level_map[next_level]["label"]
+                reasoning.append(
+                    f"Цель {target_label} уже закрыта. Для роста к {next_label} усили: {gap_titles}."
                 )
             else:
                 reasoning.append(
                     f"Ближайшие ограничения для роста до {target_label}: {gap_titles}."
                 )
         else:
-            reasoning.append(
-                f"Ключевые требования для цели {target_label} уже в основном закрыты."
-            )
+            if self._level_rank(role, current_level) > self._level_rank(role, target_level):
+                reasoning.append(
+                    f"Цель {target_label} уже закрыта; по текущим сигналам профиль соответствует уровню {current_label}."
+                )
+            else:
+                reasoning.append(
+                    f"Ключевые требования для цели {target_label} уже в основном закрыты."
+                )
 
         return reasoning
 
@@ -505,6 +518,17 @@ class AssessmentEngine:
             )
 
         if self._level_rank(role, current_level) >= self._level_rank(role, target_level):
+            if self._level_rank(role, current_level) > self._level_rank(role, target_level):
+                if next_level:
+                    next_label = level_map[next_level]["label"]
+                    return (
+                        f"Цель {target_label} уже закрыта: по факту твой профиль ближе к {current_label}. "
+                        f"Если двигаться дальше, следующий ориентир - {next_label}; укрепляй {', '.join(strengths[:2])} на реальных задачах."
+                    )
+                return (
+                    f"Цель {target_label} уже закрыта, а профиль выглядит сильнее и ближе к уровню {current_label}. "
+                    "Дальше имеет смысл усиливать архитектурное влияние и инженерное лидерство."
+                )
             if next_level:
                 next_label = level_map[next_level]["label"]
                 return (

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import json
 import logging
 from dataclasses import dataclass
@@ -434,22 +435,10 @@ class OpenRouterLLMService(BaseLLMService):
         raw_content: str,
         competency_map: dict[str, str],
     ) -> dict[str, Any]:
-        content = raw_content.strip()
-        if "```" in content:
-            content = content.split("```", maxsplit=1)[-1]
-            content = content.rsplit("```", maxsplit=1)[0]
-            content = content.replace("json", "", 1).strip()
-
-        if not content.startswith("{"):
-            start_index = content.find("{")
-            end_index = content.rfind("}")
-            if start_index == -1 or end_index == -1:
-                raise RuntimeError("No JSON object found in extraction response")
-            content = content[start_index : end_index + 1]
-
-        payload = json.loads(content)
-        if not isinstance(payload, dict):
-            raise RuntimeError("Extraction response is not a JSON object")
+        payload = OpenRouterLLMService._load_json_object(
+            raw_content,
+            context="extraction",
+        )
 
         normalized_skills = payload.get("normalized_skills", [])
         strengths = payload.get("strengths", [])
@@ -489,22 +478,10 @@ class OpenRouterLLMService(BaseLLMService):
         raw_content: str,
         competency_map: dict[str, str],
     ) -> dict[str, Any]:
-        content = raw_content.strip()
-        if "```" in content:
-            content = content.split("```", maxsplit=1)[-1]
-            content = content.rsplit("```", maxsplit=1)[0]
-            content = content.replace("json", "", 1).strip()
-
-        if not content.startswith("{"):
-            start_index = content.find("{")
-            end_index = content.rfind("}")
-            if start_index == -1 or end_index == -1:
-                raise RuntimeError("No JSON object found in vacancy response")
-            content = content[start_index : end_index + 1]
-
-        payload = json.loads(content)
-        if not isinstance(payload, dict):
-            raise RuntimeError("Vacancy response is not a JSON object")
+        payload = OpenRouterLLMService._load_json_object(
+            raw_content,
+            context="vacancy",
+        )
 
         requirements = payload.get("requirements", [])
         cleaned_requirements: list[dict[str, Any]] = []
@@ -544,22 +521,10 @@ class OpenRouterLLMService(BaseLLMService):
 
     @staticmethod
     def _parse_assessment_enrichment_json(raw_content: str) -> dict[str, Any]:
-        content = raw_content.strip()
-        if "```" in content:
-            content = content.split("```", maxsplit=1)[-1]
-            content = content.rsplit("```", maxsplit=1)[0]
-            content = content.replace("json", "", 1).strip()
-
-        if not content.startswith("{"):
-            start_index = content.find("{")
-            end_index = content.rfind("}")
-            if start_index == -1 or end_index == -1:
-                raise RuntimeError("No JSON object found in assessment enrichment response")
-            content = content[start_index : end_index + 1]
-
-        payload = json.loads(content)
-        if not isinstance(payload, dict):
-            raise RuntimeError("Assessment enrichment response is not a JSON object")
+        payload = OpenRouterLLMService._load_json_object(
+            raw_content,
+            context="assessment enrichment",
+        )
 
         raw_project_ideas = payload.get("project_ideas", [])
         cleaned_project_ideas: list[str] = []
@@ -585,6 +550,128 @@ class OpenRouterLLMService(BaseLLMService):
             "narrative_explanation": narrative or None,
             "project_ideas": cleaned_project_ideas,
         }
+
+    @staticmethod
+    def _load_json_object(raw_content: str, *, context: str) -> dict[str, Any]:
+        content = OpenRouterLLMService._extract_json_object_text(
+            raw_content,
+            context=context,
+        )
+        attempts = [
+            content,
+            OpenRouterLLMService._normalize_json_like_content(content),
+        ]
+
+        for attempt in attempts:
+            if not attempt:
+                continue
+            try:
+                payload = json.loads(attempt)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(payload, dict):
+                return payload
+            raise RuntimeError(f"{context.capitalize()} response is not a JSON object")
+
+        python_like = OpenRouterLLMService._to_python_literal(attempts[-1] or content)
+        try:
+            payload = ast.literal_eval(python_like)
+        except (SyntaxError, ValueError) as error:
+            raise RuntimeError(f"Invalid {context} response: {error}") from error
+
+        if not isinstance(payload, dict):
+            raise RuntimeError(f"{context.capitalize()} response is not a JSON object")
+        return payload
+
+    @staticmethod
+    def _extract_json_object_text(raw_content: str, *, context: str) -> str:
+        content = raw_content.strip()
+        if "```" in content:
+            content = content.split("```", maxsplit=1)[-1]
+            content = content.rsplit("```", maxsplit=1)[0]
+            content = content.replace("json", "", 1).strip()
+
+        if content.startswith("{"):
+            return content
+
+        start_index = content.find("{")
+        end_index = content.rfind("}")
+        if start_index == -1 or end_index == -1:
+            raise RuntimeError(f"No JSON object found in {context} response")
+        return content[start_index : end_index + 1]
+
+    @staticmethod
+    def _normalize_json_like_content(content: str) -> str:
+        normalized = (
+            content.replace("\ufeff", "")
+            .replace("“", '"')
+            .replace("”", '"')
+            .replace("‘", "'")
+            .replace("’", "'")
+        )
+        return normalized.replace(",]", "]").replace(",}", "}")
+
+    @staticmethod
+    def _to_python_literal(content: str) -> str:
+        result: list[str] = []
+        index = 0
+        in_string = False
+        quote_char = ""
+
+        while index < len(content):
+            char = content[index]
+
+            if in_string:
+                result.append(char)
+                if char == "\\" and index + 1 < len(content):
+                    index += 1
+                    result.append(content[index])
+                elif char == quote_char:
+                    in_string = False
+                index += 1
+                continue
+
+            if char in {'"', "'"}:
+                in_string = True
+                quote_char = char
+                result.append(char)
+                index += 1
+                continue
+
+            matched = OpenRouterLLMService._replace_json_literal_token(content, index)
+            if matched is not None:
+                replacement, width = matched
+                result.append(replacement)
+                index += width
+                continue
+
+            result.append(char)
+            index += 1
+
+        return "".join(result)
+
+    @staticmethod
+    def _replace_json_literal_token(content: str, index: int) -> tuple[str, int] | None:
+        token_map = {
+            "true": "True",
+            "false": "False",
+            "null": "None",
+        }
+        for token, replacement in token_map.items():
+            if not content.startswith(token, index):
+                continue
+
+            left_ok = index == 0 or not (
+                content[index - 1].isalnum() or content[index - 1] == "_"
+            )
+            right_index = index + len(token)
+            right_ok = right_index >= len(content) or not (
+                content[right_index].isalnum() or content[right_index] == "_"
+            )
+            if left_ok and right_ok:
+                return replacement, len(token)
+
+        return None
 
 
 def build_llm_service(settings: Any) -> BaseLLMService:
